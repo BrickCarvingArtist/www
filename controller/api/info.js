@@ -15,7 +15,11 @@ export default [
 			// 		message : "非法请求"
 			// 	});
 			// }
-			res.json({
+			res.set({
+				"Access-Control-Allow-Origin" : "*",
+				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
+				"Access-Control-Allow-Methods" : "GET"
+			}).json({
 				code : 0,
 				data : [
 					{
