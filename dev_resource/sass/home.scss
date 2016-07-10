@@ -1,0 +1,72 @@
+@import "./component/core";
+@import "./component/variable";
+@import "./component/dialog";
+@import "./component/header";
+@import "./component/footer";
+$imgStaticBg:url(../image/homebg.png);
+$imgStatic:url(../image/home.png);
+$imgPartner:url(../image/partner.png);
+$imgManufacturer:url(../image/manufacturer.png);
+.singleBtn{
+	height:35px;
+	text-align:center;
+	line-height:35px;
+	font-size:14px;
+	cursor:pointer;
+}
+.banner, .static, .media, .partner, .manufacturer{
+	float:left;
+	width:100%;
+}
+.banner{
+	position:relative;
+	height:360px;
+	.item{
+		position:absolute;
+		top:0;
+		left:0;
+		display:block;
+		width:100%;
+		height:100%;
+		background-position:0 center;
+	}
+	.current{
+		z-index:1;
+	}
+	.normal{
+		z-index:0;
+	}
+	.w1000{
+		position:relative;
+		z-index:2;
+	}
+	.signIn{
+		float:right;
+		margin:40px 0;
+		padding:10px;
+		width:240px;
+		height:260px;
+		background-color:$blue1;
+		.singleBtn{
+			margin:20px 10px;
+			width:220px;
+		}
+		.anchorSignUp, .anchorReset{
+			font-size:14px;
+			color:$blue2;
+			cursor:pointer;
+		}
+		.anchorSignUp{
+			float:left;
+			margin-left:10px;
+		}
+		.anchorReset{
+			float:right;
+			margin-right:10px;
+		}
+	}
+}
+.footer{
+	float:left;
+	width:100%;
+}
