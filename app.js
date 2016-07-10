@@ -1,6 +1,6 @@
 import express from "express";
-import RouterApi from "./controller/api/index";
 import bodyParser from "body-parser";
+import {Router as RouterApi} from "./controller/api/index";
 import {ServerConfig} from "./config/config";
 const port = process.env.PORT || ServerConfig.port,
 	app = express(),
