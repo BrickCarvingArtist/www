@@ -15,17 +15,17 @@ const
 		message
 	},
 	Route = user.concat(manage).concat(stream).concat(message),
-	Router = (router, request) => {
+	Router = (router) => {
 		let reqType;
 		for(let i in Enum){
 			reqType = `/api/${i.toLowerCase()}/`;
 			Enum[i].map(list => {
 				router.route(`${reqType}${list.from}`)[list.method]((req, res) => {
-					if(list.to){
-						requestJavaServer(list, request, req, res, i.toLowerCase());
-					}else{
+					// if(list.to){
+					// 	requestJavaServer(list, request, req, res, i.toLowerCase());
+					// }else{
 						list.callback(req, res);
-					}
+					// }
 				});
 			});
 		}
