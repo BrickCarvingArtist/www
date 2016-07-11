@@ -1,35 +1,26 @@
-import {Page as home} from "../../dev_resource/pack/home";
-import {Page as user} from "../../dev_resource/pack/user";
-import {Page as corporation} from "../../dev_resource/pack/corporation";
-import {Page as project} from "../../dev_resource/pack/project";
-import {Page as bill} from "../../dev_resource/pack/bill";
-import {Page as loan} from "../../dev_resource/pack/loan";
-import {Page as contract} from "../../dev_resource/pack/contract";
-import {Page as messageEntrance} from "../../dev_resource/pack/messageentrance";
-import {Page as manufacturer} from "../../dev_resource/pack/manufacturer";
 const Corp = "-砖雕艺术馆",
 	ViewModel = "./index",
 	Enum = [
 		{
 			route : "/",
 			signType : [0, 1],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel , {
 					style : [
 						"/css/home.css"
 					],
 					script : [
-						"/js/home.js"
+						/*"/js/home.js"*/
 					],
 					title : `首页${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(home)({}))
+					page : "维护更新中"
 				});
 			}
 		},
 		{
 			route : "/user",
 			signType : [0, 1],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel , {
 					style : [
 						"/css/user.css"
@@ -38,14 +29,14 @@ const Corp = "-砖雕艺术馆",
 						"/js/user.js"
 					],
 					title : `安全中心${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(user)({}))
+					page : "维护更新中"
 				});
 			}
 		},
 		{
 			route : "/manage/corporation",
 			signType : [2],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel, {
 					style : [
 						"/css/corporation.css"
@@ -55,7 +46,7 @@ const Corp = "-砖雕艺术馆",
 						"/js/corporation.js"
 					],
 					title : `企业信息${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(corporation)({}))
+					page : "维护更新中"
 				});
 			}
 		},
@@ -72,14 +63,14 @@ const Corp = "-砖雕艺术馆",
 						"/js/project.js"
 					],
 					title : `我的项目${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(project)({}))
+					page : "维护更新中"
 				});
 			}
 		},
 		{
 			route : "/manage/bill",
 			signType : [2],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel, {
 					style : [
 						"/css/bill.css"
@@ -89,14 +80,14 @@ const Corp = "-砖雕艺术馆",
 						"/js/bill.js"
 					],
 					title : `我的订单${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(bill)({}))
+					page : "维护更新中"
 				});
 			}
 		},
 		{
 			route : "/manage/loan",
 			signType : [2],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel, {
 					style : [
 						"/css/loan.css"
@@ -105,14 +96,14 @@ const Corp = "-砖雕艺术馆",
 						"/js/loan.js"
 					],
 					title : `我的放款${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(loan)({}))
+					page : "维护更新中"
 				});
 			}
 		},
 		{
 			route : "/manage/contract",
 			signType : [2],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel, {
 					style : [
 						"/css/contract.css"
@@ -121,14 +112,14 @@ const Corp = "-砖雕艺术馆",
 						"/js/contract.js"
 					],
 					title : `我的合同${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(contract)({}))
+					page : "维护更新中"
 				});
 			}
 		},
 		{
 			route : "/message/entrance",
 			signType : [2],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel, {
 					style : [
 						"/css/messageentrance.css"
@@ -137,14 +128,14 @@ const Corp = "-砖雕艺术馆",
 						"/js/messageentrance.js"
 					],
 					title : `合同签约-短信验证${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(messageEntrance)({}))
+					page : "维护更新中"
 				});
 			}
 		},
 		{
 			route : "/manage/manufacturer",
 			signType : [2],
-			callback(react, reactDOMServer, req, res){
+			callback(req, res){
 				res.render(ViewModel, {
 					style : [
 						"/css/manufacturer.css"
@@ -154,16 +145,14 @@ const Corp = "-砖雕艺术馆",
 						"/js/manufacturer.js"
 					],
 					title : `合作厂家${Corp}`,
-					page : reactDOMServer.renderToString(react.createFactory(manufacturer)({}))
+					page : "维护更新中"
 				});
 			}
 		}
 	],
-	Router = (router, react, reactDOMServer) => {
+	Router = (router) => {
 		Enum.map(list => {
-			router.route(list.route).get((req, res) => {
-				list.callback(react, reactDOMServer, req, res);
-			});
+			router.route(list.route).get(list.callback);
 		});
 		return router;
 	};
