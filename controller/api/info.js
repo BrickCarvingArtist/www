@@ -25,37 +25,37 @@ export default [
 					{
 						name : "我是图片1",
 						anchorHref : "https://www.baidu.com/",
-						imageUrl : "/case1/image/banner/1.jpg"
+						imageUrl : "../image/banner/1.jpg"
 					},
 					{
 						name : "我是图片2",
 						anchorHref : "http://www.qq.com/",
-						imageUrl : "/case1/image/banner/2.jpg"
+						imageUrl : "../image/banner/2.jpg"
 					},
 					{
 						name : "我是图片3",
 						anchorHref : "https://www.taobao.com/",
-						imageUrl : "/case1/image/banner/3.jpg"
+						imageUrl : "../image/banner/3.jpg"
 					},
 					{
 						name : "我是图片4",
 						anchorHref : "https://www.tmall.com/",
-						imageUrl : "/case1/image/banner/4.jpg"
+						imageUrl : "../image/banner/4.jpg"
 					},
 					{
 						name : "我是图片5",
 						anchorHref : "http://www.163.com/",
-						imageUrl : "/case1/image/banner/5.jpg"
+						imageUrl : "../image/banner/5.jpg"
 					},
 					{
 						name : "我是图片6",
 						anchorHref : "http://lol.qq.com/",
-						imageUrl : "/case1/image/banner/6.jpg"
+						imageUrl : "../image/banner/6.jpg"
 					},
 					{
 						name : "我是图片7",
 						anchorHref : "https//www.douyu.com/",
-						imageUrl : "/case1/image/banner/7.jpg"
+						imageUrl : "../image/banner/7.jpg"
 					}
 				],
 				message : "success"
