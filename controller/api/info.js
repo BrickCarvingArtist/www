@@ -126,13 +126,13 @@ export default [
 			if(tel && password && code && ~tel.search(/^\d{11}$/) || ~password.search(/^\s*/) && code === tel.substring(5, 11)){
 				res.json({
 					code : 0,
-					data : parseInt(tel.substring(5, 11)),
+					data : `你的手机号${tel}注册成功！`,
 					message : "success"
 				});
 			}else{
 				res.json({
 					code : 400,
-					data : `你的手机号{tel}注册成功！`,
+					data : null,
 					message : "wrong"
 				});
 			}
