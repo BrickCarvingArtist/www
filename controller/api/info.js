@@ -88,7 +88,7 @@ export default [
 		method : "get",
 		signType : [0, 1, 2],
 		callback(req, res){
-			let tel = parseInt(req.query.tel);
+			let tel = req.query.tel;
 			res.set({
 				"Access-Control-Allow-Origin" : "*",
 				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
