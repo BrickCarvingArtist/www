@@ -89,15 +89,24 @@ export default [
 		signType : [0, 1, 2],
 		callback(req, res){
 			let tel = req.query.tel;
-			~tel.search(/^\d{11}$/) && res.set({
+			res.set({
 				"Access-Control-Allow-Origin" : "*",
 				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
 				"Access-Control-Allow-Methods" : "GET"
-			}).json({
-				code : 0,
-				data : tel.substring(5, 11),
-				message : "success"
 			});
+			if(~tel.search(/^\d{11}$/)){
+				res.json({
+					code : 0,
+					data : tel.substring(5, 11),
+					message : "success"
+				});	
+			}else{
+				res.json({
+					code : 400,
+					data : null,
+					message : "wrong"
+				});
+			}
 		}
 	},
 	{
