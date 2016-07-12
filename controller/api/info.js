@@ -88,7 +88,7 @@ export default [
 		method : "get",
 		signType : [0, 1, 2],
 		callback(req, res){
-			let tel = req.query.tel;
+			let tel = parseInt(req.query.tel);
 			res.set({
 				"Access-Control-Allow-Origin" : "*",
 				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
@@ -97,7 +97,7 @@ export default [
 			if(~tel.search(/^\d{11}$/)){
 				res.json({
 					code : 0,
-					data : tel.substring(5, 11),
+					data : parseInt(tel.substring(5, 11)),
 					message : "success"
 				});	
 			}else{
