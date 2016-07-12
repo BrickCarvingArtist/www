@@ -75,7 +75,7 @@ export default [
 			res.set({
 				"Access-Control-Allow-Origin" : "*",
 				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
-				"Access-Control-Allow-Methods" : "GET"
+				"Access-Control-Allow-Methods" : "POST"
 			}).json({
 				code : 0,
 				data : body,
@@ -94,7 +94,7 @@ export default [
 				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
 				"Access-Control-Allow-Methods" : "GET"
 			});
-			if(~tel.search(/^\d{11}$/)){
+			if(tel && ~tel.search(/^\d{11}$/)){
 				res.json({
 					code : 0,
 					data : parseInt(tel.substring(5, 11)),
@@ -114,7 +114,28 @@ export default [
 		method : "post",
 		signType : [0, 1, 2],
 		callback(req, res){
-
+			let body = req.body,
+				tel = body.tel,
+				password = body.password,
+				code = body.code;
+			res.set({
+				"Access-Control-Allow-Origin" : "*",
+				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
+				"Access-Control-Allow-Methods" : "POST"
+			});
+			if(tel && password && code && ~tel.search(/^\d{11}$/) || ~password.search(/^\s*/) && code === tel.substring(5, 11)){
+				res.json({
+					code : 0,
+					data : parseInt(tel.substring(5, 11)),
+					message : "success"
+				});
+			}else{
+				res.json({
+					code : 400,
+					data : `你的手机号{tel}注册成功！`,
+					message : "wrong"
+				});
+			}
 		}
 	}
 ];
