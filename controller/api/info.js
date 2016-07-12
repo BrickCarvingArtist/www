@@ -123,7 +123,7 @@ export default [
 				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
 				"Access-Control-Allow-Methods" : "POST"
 			});
-			if(tel && password && code && ~tel.search(/^\d{11}$/) || ~password.search(/^\s*/) && code === tel.substring(5, 11)){
+			if(tel && password && code && ~tel.search(/^\d{11}$/) && password.search(/\s*/g) && code === tel.substring(5, 11)){
 				res.json({
 					code : 0,
 					data : `你的手机号${tel}注册成功！`,
