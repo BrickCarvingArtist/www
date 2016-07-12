@@ -84,7 +84,7 @@ export default [
 		}
 	},
 	{
-		form : "message",
+		from : "message",
 		method : "get",
 		signType : [0, 1, 2],
 		callback(req, res){
