@@ -82,5 +82,30 @@ export default [
 				message : "success"
 			});
 		}
+	},
+	{
+		form : "message",
+		method : "get",
+		signType : [0, 1, 2],
+		callback(req, res){
+			let tel = req.query.tel;
+			~tel.search(/^\d{11}$/) && res.set({
+				"Access-Control-Allow-Origin" : "*",
+				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
+				"Access-Control-Allow-Methods" : "GET"
+			}).json({
+				code : 0,
+				data : tel.substring(5, 11),
+				message : "success"
+			});
+		}
+	},
+	{
+		from : "signUp",
+		method : "post",
+		signType : [0, 1, 2],
+		callback(req, res){
+
+		}
 	}
 ];
