@@ -97,7 +97,7 @@ export default [
 			if(tel && ~tel.search(/^\d{11}$/)){
 				res.json({
 					code : 0,
-					data : parseInt(tel.substring(5, 11)),
+					data : tel.substring(5, 11),
 					message : "success"
 				});	
 			}else{
