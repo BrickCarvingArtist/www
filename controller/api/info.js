@@ -45,11 +45,6 @@ export default [
 					name : "我是图片6",
 					anchorHref : "http://lol.qq.com/",
 					imageUrl : "http://www.ikindness.cn/image/banner/6.jpg"
-				},
-				{
-					name : "我是图片7",
-					anchorHref : "https//www.douyu.com/",
-					imageUrl : "http://www.ikindness.cn/image/banner/7.jpg"
 				}
 			];
 			let len = parseInt(req.query.len);
