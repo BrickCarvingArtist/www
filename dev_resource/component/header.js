@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 export class TopNav extends Component{
-	super(props){}
+	constructor(props){
+		super(props);
+	}
 	render(){
 		let option = this.props.option;
 		return (
@@ -9,9 +11,9 @@ export class TopNav extends Component{
 					{
 						option.map((list, index) => {
 							return list.set ? (
-								<div className="supNav">
+								<div className="supNav" key={index}>
 									<i className="column"></i>
-									<a href={list.href}>
+									<a href={list.href} target="_blank">
 										{list.name}
 									</a>
 									<div className="subNav">
@@ -37,7 +39,7 @@ export class TopNav extends Component{
 															{
 																list.key && list.key.map((list, index) => {
 																	return (
-																		<b title={list.description}>
+																		<b title={list.description} key={index}>
 																			{list.name}
 																		</b>
 																	)
@@ -51,7 +53,7 @@ export class TopNav extends Component{
 									</div>
 								</div>
 							) : (
-								<a className="supNav" href={list.href}>
+								<a className="supNav" href={list.href} target="_blank" key={index}>
 									{list.name}
 								</a>
 							);
@@ -78,7 +80,7 @@ TopNav.defaultProps = {
 			set : [
 				{
 					name : "获取数据",
-					url : "/api/info/test",
+					url : "/api/test/get",
 					description : "学习ajax,获取数据",
 					method : "get",
 					key : [
@@ -90,19 +92,19 @@ TopNav.defaultProps = {
 				},
 				{
 					name : "提交数据",
-					url : "/api/info/testPost",
+					url : "/api/test/post",
 					description : "学习ajax,提交数据",
 					method : "post"
 				},
 				{
 					name : "获取验证码",
-					url : "/api/info/message",
+					url : "/api/test/message",
 					description : "学习ajax,表单学习",
 					method : "get"
 				},
 				{
 					name : "注册",
-					url : "/api/info/signUp",
+					url : "/api/test/signUp",
 					description : "学习ajax,同步与异步提交表单",
 					method : "post",
 					key : [
@@ -124,17 +126,73 @@ TopNav.defaultProps = {
 		}
 	]
 };
-export class Header extends Component{
-	super(props){}
+class Search extends Component{
 	render(){
 		return (
-			<div className="header">
+			<div className="search"></div>
+		);
+	}
+}
+export class Nav extends Component{
+	constructor(props){
+		super(props);
+	}
+	render(){
+		let option = this.props.option.reverse();
+		return (
+			<div className="nav">
 				<div className="w1200">
+					<div className="show"></div>
+					{
+						option.map((list, index) => {
+							return (
+								<a href={list.href} target="_blank" key={index}>
+									{list.name}
+								</a>
+							);
+						})
+					}
 				</div>
 			</div>
 		);
 	}
+}
+Nav.defaultProps = {
+	option : [
+		{
+			name : "艺术馆",
+			href : "/"
+		},
+		{
+			name : "科技馆",
+			href : "http://tech.ikindness.cn/"
+		},
+		{
+			name : "美食馆",
+			href : "http://food.ikindness.cn/"
+		},
+		{
+			name : "运动馆",
+			href : "http://sport.ikindness.cn/"
+		},
+		{
+			name : "少儿馆",
+			href : "http://child.ikindness.cn/"
+		}
+	]
 };
-Header.defaultProps = {
-
+export class Header extends Component{
+	render(){
+		return (
+			<div className="header">
+				<div className="w1200">
+					<div className="logoPart">
+						<a className="logo" title="砖雕艺术馆" href="/">logo</a>
+						<Search />
+						<div className="code"></div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 };

@@ -1,0 +1,48 @@
+.banner
+	position relative
+	float left
+	width 100%
+	height 320px
+	.img
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
+		background-color rgb(255, 255, 255)
+		background-position 50% 50%
+		background-size contain
+	.indicator
+		position absolute
+		bottom 20px
+		left 50%
+		padding 2px 4px
+		background-color rgba(255, 255, 255, .6)
+		border-radius 6px
+		transform translateX(-50%)
+		z-index 1
+		em
+			float left
+			display block
+			width 10px
+			height 10px
+			background-color rgb(64, 128, 255)
+			border 1px solid rgb(234, 234, 234)
+			border-radius 50%
+			cursor pointer
+			&.current
+				background-color rgb(255, 128, 64)
+			&:not(:last-of-type)
+				margin-right 4px
+	&.tab
+		.img
+			&.current
+				z-index 1
+	&.fade
+		.img
+			opacity 0
+			&.current
+				animation fade 1s forwards
+@keyframes fade
+	to
+		opacity 1

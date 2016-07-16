@@ -4,7 +4,7 @@ const entryPath = "./dev_resource/entry/";
 export default {
 	entry : {
 		home : `${entryPath}home`,
-		dependencies : ["react", "react-dom", "react-router", "redux", "immutable"]
+		dependencies : ["react", "react-dom", "react-router", "redux"]
 	},
 	output : {
 		path : `${process.cwd()}/resource/`,

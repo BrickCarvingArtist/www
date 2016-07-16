@@ -5,6 +5,7 @@ import manage from "./manage";
 import stream from "./stream";
 import upload from "./upload";
 import message from "./message";
+import test from "./test";
 const
 	Enum = {
 		info,
@@ -12,7 +13,8 @@ const
 		manage,
 		stream,
 		upload,
-		message
+		message,
+		test
 	},
 	Route = user.concat(manage).concat(stream).concat(message),
 	Router = (router) => {

@@ -1,6 +1,6 @@
 const WebpackDevServerConfig = {
 		host : "127.0.0.1",
-		port : 20000
+		port : 60000
 	},
 	ServerConfig = {
 		port : 10000
