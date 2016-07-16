@@ -1,76 +1,65 @@
 import React, {Component} from "react";
-class Footer extends Component{
-	constructor(props){
-		super(props);
-	}
+export default class Footer extends Component{
+	super(props){}
 	render(){
-		let arrInfo = [],
-			arrOption = [],
-			props = this.props,
-			info = props.info,
-			option = props.option;
-		option.map((list, index) => {
-			arrOption.push(
-				<a key={index} href={list.href}>
-					{list.name}
-				</a>
-			);
-		});
-		for(let i in info){
-			arrInfo.push(
-				<span key={i} dangerouslySetInnerHTML={
-					{
-						__html : info[i]
-					}
-				}></span>
-			);
-		}
+		let props = this.props,
+			nav = props.nav,
+			legal = props.legal;
 		return (
 			<div className="footer">
-				<div className="upper">
-					<div className="w1200">
-						<p className="left">
-							{arrOption}
-						</p>
-						<p className="right">
-							<span>联系QQ:</span>
-							<strong>806321554</strong>
-							<span>(工作日9:00-17:00)</span>
-						</p>
+				<div className="w1200">
+					<div className="top">
+						{
+							nav.map((list, index) => {
+								return (
+									<a href={list.href} key={index}>
+										{list.name}
+									</a>
+								);
+							})
+						}
 					</div>
-				</div>
-				<div className="lower">
-					<div className="w1000">
-						{arrInfo}
+					<div className="bottom">
+						{legal.map((list, index) => {
+							return (
+								<p key={index}>
+									<a href={list.href} key={index} dangerouslySetInnerHTML={{__html : list.name}}></a>
+								</p>
+							);
+						})}
 					</div>
 				</div>
 			</div>
 		);
 	}
-}
+};
 Footer.defaultProps = {
-	option : [
+	nav : [
 		{
 			name : "公司简介",
-			href : "/introduction"
+			href : "/corporation"
 		},
 		{
-			name : "法律法规",
-			href : "/legal"
+			name : "个人中心",
+			href : "/user"
 		},
 		{
 			name : "帮助中心",
-			href : "/wiki"
+			href : "/help"
 		},
 		{
 			name : "联系我们",
-			href : "/aboutus"
+			href : "/contact"
 		}
 	],
-	info : {
-		copyright : "&copy;2015",
-		record : "浙ICP备15038011号",
-		corporation : "砖雕艺术馆"
-	}
+	legal : [
+		{
+			name : "Copyright&copy;2015-2016 B.C.A. All Rights Reserved 砖雕艺术馆",
+			href : "http://www.ikindness.cn/"
+		},
+		{
+			name : "浙ICP备15038011号",
+			href : "http://icp.chinaz.com/info?q=%E6%B5%99ICP%E5%A4%8715038011%E5%8F%B7"
+		}
+	]
 };
-export default Footer;

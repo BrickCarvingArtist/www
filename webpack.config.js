@@ -4,7 +4,6 @@ const entryPath = "./dev_resource/entry/";
 export default {
 	entry : {
 		home : `${entryPath}home`,
-		user : `${entryPath}user`,
 		dependencies : ["react", "react-dom", "react-router", "redux", "immutable"]
 	},
 	output : {

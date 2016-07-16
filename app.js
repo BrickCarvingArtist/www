@@ -1,5 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
+import {createFactory} from "react";
+import {renderToString} from "react-dom/server";
 import {Router as RouterApi} from "./controller/api";
 import {Router as RouterStatic} from "./controller/static";
 import {ServerConfig} from "./config/config";
@@ -16,6 +18,6 @@ app.use(express.static(`${__dirname}/resource`, {
 	maxAge : 600000
 }));
 app.use(RouterApi(router));
-app.use(RouterStatic(router));
+app.use(RouterStatic(router, createFactory, renderToString));
 app.listen(port);
 console.log(`Server started on port ${port}`);
