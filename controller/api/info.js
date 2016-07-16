@@ -2,6 +2,7 @@ export default [
 	{
 		from : "test",
 		method : "get",
+		cross : 1,
 		signType : [0, 1, 2],
 		callback(req, res){
 			// let referer = req.headers.referer;
@@ -48,11 +49,7 @@ export default [
 				}
 			];
 			let len = parseInt(req.query.len);
-			res.set({
-				"Access-Control-Allow-Origin" : "*",
-				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
-				"Access-Control-Allow-Methods" : "GET"
-			}).json({
+			res.json({
 				code : 0,
 				data : isNaN(len) ? data : data.filter(function(list, index){
 					return index < len;
@@ -64,14 +61,11 @@ export default [
 	{
 		from : "testPost",
 		method : "post",
+		cross : 1,
 		signType : [0, 1, 2],
 		callback(req, res){
 			let body = req.body;
-			res.set({
-				"Access-Control-Allow-Origin" : "*",
-				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
-				"Access-Control-Allow-Methods" : "POST"
-			}).json({
+			res.json({
 				code : 0,
 				data : body,
 				message : "success"
@@ -81,56 +75,40 @@ export default [
 	{
 		from : "message",
 		method : "get",
+		cross : 1,
 		signType : [0, 1, 2],
 		callback(req, res){
 			let tel = req.query.tel;
-			res.set({
-				"Access-Control-Allow-Origin" : "*",
-				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
-				"Access-Control-Allow-Methods" : "GET"
-			});
-			if(tel && ~tel.search(/^\d{11}$/)){
-				res.json({
-					code : 0,
-					data : tel.substring(5, 11),
-					message : "success"
-				});	
-			}else{
-				res.json({
-					code : 400,
-					data : null,
-					message : "wrong"
-				});
-			}
+			res.json(tel && ~tel.search(/^\d{11}$/) ? {
+				code : 0,
+				data : tel.substring(5, 11),
+				message : "success"
+			} : {
+				code : 400,
+				data : null,
+				message : "wrong"
+			});	
 		}
 	},
 	{
 		from : "signUp",
 		method : "post",
+		cross : 1,
 		signType : [0, 1, 2],
 		callback(req, res){
 			let body = req.body,
 				tel = body.tel,
 				password = body.password,
 				code = body.code;
-			res.set({
-				"Access-Control-Allow-Origin" : "*",
-				"Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept",
-				"Access-Control-Allow-Methods" : "POST"
+			res.json(tel && password && code && ~tel.search(/^\d{11}$/) && !~password.search(/\s/g) && code === tel.substring(5, 11) ? {
+				code : 0,
+				data : `你的手机号${tel}注册成功！`,
+				message : "success"
+			} : {
+				code : 400,
+				data : null,
+				message : "wrong"
 			});
-			if(tel && password && code && ~tel.search(/^\d{11}$/) && !~password.search(/\s/g) && code === tel.substring(5, 11)){
-				res.json({
-					code : 0,
-					data : `你的手机号${tel}注册成功！`,
-					message : "success"
-				});
-			}else{
-				res.json({
-					code : 400,
-					data : null,
-					message : "wrong"
-				});
-			}
 		}
 	}
 ];

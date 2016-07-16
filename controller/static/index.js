@@ -13,7 +13,7 @@ const Corp = "-砖雕艺术馆",
 						/*"/js/home.js"*/
 					],
 					title : `首页${Corp}`,
-					page : "维护更新中"
+					page : "<center>浙ICP备15038011号</center>"
 				});
 			}
 		},
