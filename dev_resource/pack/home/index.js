@@ -1,4 +1,4 @@
-import React, {Component} from "React";
+import React, {Component} from "react";
 import {TopNav, Header} from "../../component/header";
 import Footer from "../../component/footer";
 export class Page extends Component{
