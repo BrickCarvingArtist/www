@@ -6,7 +6,7 @@ export default class Footer extends Component{
 			nav = props.nav,
 			legal = props.legal;
 		return (
-			<div className="footer">
+			<div className="footer full">
 				<div className="w1200">
 					<div className="top">
 						{
@@ -55,7 +55,7 @@ Footer.defaultProps = {
 	legal : [
 		{
 			name : "Copyright&copy;2015-2016 B.C.A. All Rights Reserved 砖雕艺术馆",
-			href : "http://www.ikindness.cn/"
+			href : "/"
 		},
 		{
 			name : "浙ICP备15038011号",

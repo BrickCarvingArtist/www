@@ -12,7 +12,7 @@ export class TopNav extends Component{
 						option.map((list, index) => {
 							return list.set ? (
 								<div className="supNav" key={index}>
-									<i className="column"></i>
+									<i className="icon20 column"></i>
 									<a href={list.href} target="_blank">
 										{list.name}
 									</a>
@@ -94,13 +94,25 @@ TopNav.defaultProps = {
 					name : "提交数据",
 					url : "/api/test/post",
 					description : "学习ajax,提交数据",
-					method : "post"
+					method : "post",
+					key : [
+						{
+							name : "任意参数",
+							description : "任意类型,任意参数"
+						}
+					]
 				},
 				{
 					name : "获取验证码",
 					url : "/api/test/message",
 					description : "学习ajax,表单学习",
-					method : "get"
+					method : "get",
+					key : [
+						{
+							name : "tel",
+							description : "number类型，11位手机号码"
+						}
+					]
 				},
 				{
 					name : "注册",
@@ -142,11 +154,14 @@ export class Nav extends Component{
 		return (
 			<div className="nav">
 				<div className="w1200">
-					<div className="show"></div>
+					<div className="all">
+						<a href="/column" target="_blank">全部分类</a>
+						<i className="icon30 column"></i>
+					</div>
 					{
 						option.map((list, index) => {
 							return (
-								<a href={list.href} target="_blank" key={index}>
+								<a className="navBtn" href={list.href} target="_blank" key={index}>
 									{list.name}
 								</a>
 							);
@@ -176,8 +191,8 @@ Nav.defaultProps = {
 			href : "http://sport.ikindness.cn/"
 		},
 		{
-			name : "少儿馆",
-			href : "http://child.ikindness.cn/"
+			name : "App",
+			href : "http://app.ikindness.cn/"
 		}
 	]
 };
@@ -187,7 +202,7 @@ export class Header extends Component{
 			<div className="header">
 				<div className="w1200">
 					<div className="logoPart">
-						<a className="logo" title="砖雕艺术馆" href="/">logo</a>
+						<a className="logo" title="砖雕艺术馆" href="/"></a>
 						<Search />
 						<div className="code"></div>
 					</div>

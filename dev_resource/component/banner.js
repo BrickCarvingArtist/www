@@ -77,8 +77,7 @@ export default class Banner extends Component{
 								{
 									backgroundImage : `url(${list.imgSrc})`
 								}
-							} target="_blank" key={index}>
-							</a>
+							} target="_blank" key={index}></a>
 						);
 					})
 				}
@@ -92,32 +91,17 @@ Banner.defaultProps = {
 		{
 			name : "砖雕艺术馆",
 			anchorHref : "/",
-			imgSrc : "/image/banner/1.jpg"
+			imgSrc : "/image/banner/1.png"
 		},
 		{
 			name : "砖雕科学馆",
 			anchorHref : "http://tech.ikindness.cn/",
-			imgSrc : "/image/banner/2.jpg"
+			imgSrc : "/image/banner/1.png"
 		},
 		{
 			name : "关于砖雕艺术家",
 			anchorHref : "/about",
-			imgSrc : "/image/banner/3.jpg"
-		},
-		{
-			name : "砖雕美食馆",
-			anchorHref : "http://food.ikindness.cn/",
-			imgSrc : "/image/banner/4.jpg"
-		},
-		{
-			name : "砖雕运动馆",
-			anchorHref : "http://sport.ikindness.cn/",
-			imgSrc : "/image/banner/5.jpg"
-		},
-		{
-			name : "砖雕儿童馆",
-			anchorHref : "http://child.ikindness.cn/about",
-			imgSrc : "/image/banner/6.jpg"
+			imgSrc : "/image/banner/1.png"
 		}
 	]
 };
