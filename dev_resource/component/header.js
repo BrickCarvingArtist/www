@@ -68,11 +68,11 @@ TopNav.defaultProps = {
 	option : [
 		{
 			name : "登录",
-			href : "/signIn"
+			href : "http://auth.ikindness.cn/signIn"
 		},
 		{
 			name : "注册",
-			href : "/signUp"
+			href : "http://auth.ikindness.cn/signUp"
 		},
 		{
 			name : "接口",
@@ -81,7 +81,7 @@ TopNav.defaultProps = {
 				{
 					name : "获取数据",
 					url : "/api/test/get",
-					description : "学习ajax,获取数据",
+					description : "学习ajax，获取数据",
 					method : "get",
 					key : [
 						{
@@ -93,7 +93,7 @@ TopNav.defaultProps = {
 				{
 					name : "提交数据",
 					url : "/api/test/post",
-					description : "学习ajax,提交数据",
+					description : "学习ajax，提交数据",
 					method : "post",
 					key : [
 						{
@@ -105,7 +105,7 @@ TopNav.defaultProps = {
 				{
 					name : "获取验证码",
 					url : "/api/test/message",
-					description : "学习ajax,表单学习",
+					description : "学习ajax，表单学习",
 					method : "get",
 					key : [
 						{
@@ -117,7 +117,7 @@ TopNav.defaultProps = {
 				{
 					name : "注册",
 					url : "/api/test/signUp",
-					description : "学习ajax,同步与异步提交表单",
+					description : "学习ajax，同步与异步提交表单",
 					method : "post",
 					key : [
 						{
@@ -133,6 +133,106 @@ TopNav.defaultProps = {
 							description : "number类型，手机号后6位"
 						}
 					]
+				},
+				{
+					name : "获取游戏玩家信息",
+					url : "/api/test/getGameInfo",
+					description : "项目实战，游戏商城练习",
+					method : "get",
+					key : [
+						{
+							name : "qq",
+							description : "number类型，5-10位qq号码"
+						}
+					]
+				},
+				{
+					name : "获取游戏商城商品",
+					url : "/api/test/getGameProduct",
+					description : "项目实战，游戏商城练习",
+					method : "get",
+					key : [
+						{
+							name : "type",
+							description : "number类型，1为生命，2为护甲，3为魔抗，4为攻击，5为魔法"
+						},
+						{
+							name : "grade",
+							description : "number类型，等级1-3"
+						},
+						{
+							name : "status",
+							description : "number类型，1为全部，2为可用，3为不可用"
+						}
+					]
+				},
+				{
+					name : "购买游戏商城道具",
+					url : "/api/test/gameBuy",
+					description : "项目实战，游戏商城练习",
+					method : "post",
+					key : [
+						{
+							name : "qq",
+							description : "number类型，5-10位qq号码"
+						},
+						{
+							name : "productId",
+							description : "number类型，商品id"
+						},
+						{
+							name : "sum",
+							description : "number类型，购买商品数量"
+						}
+					]
+				},
+				{
+					name : "获取用户信息",
+					url : "/api/test/getInfo",
+					description : "项目实战，商品筛选列表练习",
+					method : "get",
+					key : [
+						{
+							name : "userId",
+							description : "number类型，用户id"
+						}
+					]
+				},
+				{
+					name : "获取商品列表",
+					url : "/api/test/getProduct",
+					description : "项目实战，商品筛选列表练习",
+					method : "get",
+					key : [
+						{
+							name : "type",
+							description : "number类型，商品类型"
+						},
+						{
+							name : "prize",
+							description : "array类型，价格区间，元素为number类型，[最低价格, 最高价格]"
+						},
+						{
+							name : "sort",
+							description : "number类型，0为无序，1为价格升序，2为价格降序"
+						}
+					]
+				},
+				{
+					name : "购买商品",
+					url : "/api/test/buy",
+					description : "项目实战，商品筛选列表练习",
+					method : "post",
+					key : [
+						{
+							name : "userId",
+							description : "number类型，用户id"
+						},
+						{
+							name : "product",
+							description : "array类型，商品信息，元素为number类型，[{productId : 商品id, sum : 购买商品数量}]"
+						}
+					]
 				}
 			]
 		}
@@ -145,34 +245,34 @@ class Search extends Component{
 		);
 	}
 }
-export class Nav extends Component{
+export class Header extends Component{
 	constructor(props){
 		super(props);
 	}
 	render(){
 		let option = this.props.option.reverse();
 		return (
-			<div className="nav">
+			<div className="header">
 				<div className="w1200">
-					<div className="all">
-						<a href="/column" target="_blank">全部分类</a>
-						<i className="icon30 column"></i>
+					<div className="logoPart">
+						<a className="logo" title="砖雕艺术馆" href="/"></a>
+						<Search />
+						{
+							option.map((list, index) => {
+								return (
+									<a className="anchor" href={list.href} target="_blank" key={index}>
+										{list.name}
+									</a>
+								);
+							})
+						}
 					</div>
-					{
-						option.map((list, index) => {
-							return (
-								<a className="navBtn" href={list.href} target="_blank" key={index}>
-									{list.name}
-								</a>
-							);
-						})
-					}
 				</div>
 			</div>
 		);
 	}
-}
-Nav.defaultProps = {
+};
+Header.defaultProps = {
 	option : [
 		{
 			name : "艺术馆",
@@ -195,19 +295,4 @@ Nav.defaultProps = {
 			href : "http://app.ikindness.cn/"
 		}
 	]
-};
-export class Header extends Component{
-	render(){
-		return (
-			<div className="header">
-				<div className="w1200">
-					<div className="logoPart">
-						<a className="logo" title="砖雕艺术馆" href="/"></a>
-						<Search />
-						<div className="code"></div>
-					</div>
-				</div>
-			</div>
-		);
-	}
 };

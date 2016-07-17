@@ -1,3 +1,4 @@
+@import "prefix";
 .w1200
 	width 1200px
 .full
@@ -9,10 +10,10 @@ i
 	vertical-align middle
 	&.icon20
 		width 20px
-		height 20px
+		height @width
 	&.icon30
 		width 30px
-		height 30px
+		height @width
 icon-column()
 	box-shadow (arguments[0]*2/-10)px 0 0 arguments[1] inset,
 			(arguments[0]*2/10)px 0 0 arguments[1] inset,

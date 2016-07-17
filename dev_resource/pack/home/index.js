@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {TopNav, Header, Nav} from "../../component/header";
+import {TopNav, Header} from "../../component/header";
 import Banner from "../../component/banner"
 import Footer from "../../component/footer";
 class Category extends Component{
@@ -251,7 +251,6 @@ export class Page extends Component{
 			<div className="page">
 				<TopNav />
 				<Header />
-				<Nav />
 				<div className="facade">
 					<Banner type="tab" />
 					<div className="w1200">
