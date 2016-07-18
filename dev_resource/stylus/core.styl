@@ -8,18 +8,17 @@
 i
 	display inline-block
 	vertical-align middle
-	&.icon20
-		width 20px
-		height @width
-	&.icon30
-		width 30px
-		height @width
+	for i in 20 30
+		&.icon{i}
+			width unit(i, "px")
+			height @width
 icon-column()
-	box-shadow (arguments[0]*2/-10)px 0 0 arguments[1] inset,
-			(arguments[0]*2/10)px 0 0 arguments[1] inset,
-			0 (arguments[0]*2/10+1)px 0 arguments[1] inset,
-			0 (arguments[0]*3/10+1)px 0 arguments[2] inset,
-			0 (arguments[0]*4/10+1)px 0 0 arguments[1] inset,
-			0 (arguments[0]*5/10+1)px 0 arguments[2] inset,
-			0 (arguments[0]*6/10+1)px 0 arguments[1] inset,
-			0 (arguments[0]*7/10+1)px 0 arguments[2] inset
+	a = arguments
+	box-shadow (a[0]*2/-10) 0 0 a[1] inset,
+			(a[0]*2/10) 0 0 a[1] inset,
+			0 (a[0]*2/10+1) 0 a[1] inset,
+			0 (a[0]*3/10+1) 0 a[2] inset,
+			0 (a[0]*4/10+1) 0 0 a[1] inset,
+			0 (a[0]*5/10+1) 0 a[2] inset,
+			0 (a[0]*6/10+1) 0 a[1] inset,
+			0 (a[0]*7/10+1) 0 a[2] inset

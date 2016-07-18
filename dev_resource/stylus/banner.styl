@@ -15,8 +15,9 @@
 		background-color rgb(255, 255, 255)
 		background-position 50% 50%
 	.indicator
+		btnSize = 10px
 		position absolute
-		bottom 20px
+		bottom (btnSize*2)
 		left 50%
 		padding 2px 4px
 		background-color rgba(255, 255, 255, .6)
@@ -26,7 +27,7 @@
 		em
 			float left
 			display block
-			width 10px
+			width btnSize
 			height @width
 			background-color rgb(64, 128, 255)
 			border 1px solid rgb(234, 234, 234)
@@ -35,7 +36,7 @@
 			&.current
 				background-color rgb(255, 128, 64)
 			&:not(:last-of-type)
-				margin-right 4px
+				margin-right (btnSize/5*2)
 	&.tab
 		.img
 			&.current
