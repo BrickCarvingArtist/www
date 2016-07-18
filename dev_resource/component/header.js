@@ -221,8 +221,12 @@ TopNav.defaultProps = {
 							description : "number类型，商品类型"
 						},
 						{
-							name : "prize",
-							description : "array类型，价格区间，元素为number类型，[最低价格, 最高价格]"
+							name : "min",
+							description : "number类型，最低价格"
+						},
+						{
+							name : "max",
+							description : "number类型，最高价格"
 						},
 						{
 							name : "sort",
