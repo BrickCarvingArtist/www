@@ -20,7 +20,7 @@ const
 	Router = (router) => {
 		let reqType;
 		for(let i in Enum){
-			reqType = `/api/${i.toLowerCase()}/`;
+			reqType = `/api/${i}/`;
 			Enum[i].map(list => {
 				router.route(`${reqType}${list.from}`)[list.method]((req, res) => {
 					list.cross && res.set({

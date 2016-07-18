@@ -187,6 +187,18 @@ TopNav.defaultProps = {
 					]
 				},
 				{
+					name : "获取众筹列表",
+					url : "/api/test/getFund",
+					description : "项目实战，商品列表练习",
+					method : "get",
+					key : [
+						{
+							name : "type",
+							description : "number类型, 商品类型"
+						}
+					]
+				},
+				{
 					name : "获取用户信息",
 					url : "/api/test/getInfo",
 					description : "项目实战，商品筛选列表练习",
