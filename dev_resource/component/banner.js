@@ -91,12 +91,12 @@ Banner.defaultProps = {
 		{
 			name : "砖雕艺术馆",
 			anchorHref : "/",
-			imgSrc : "/image/banner/1.png"
+			imgSrc : "http://static.ikindness.cn/image/banner/1.png"
 		},
 		{
 			name : "砖雕科学馆",
 			anchorHref : "http://tech.ikindness.cn/",
-			imgSrc : "/image/banner/2.png"
+			imgSrc : "http://static.ikindness.cn/image/banner/2.png"
 		}
 	]
 };

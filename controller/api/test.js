@@ -9,32 +9,32 @@ export default [
 				{
 					name : "我是图片1",
 					anchorHref : "https://www.baidu.com/",
-					imageUrl : "http://www.ikindness.cn/image/banner/1.jpg"
+					imageUrl : "http://static.ikindness.cn/image/banner/1.jpg"
 				},
 				{
 					name : "我是图片2",
 					anchorHref : "http://www.qq.com/",
-					imageUrl : "http://www.ikindness.cn/image/banner/2.jpg"
+					imageUrl : "http://static.ikindness.cn/image/banner/2.jpg"
 				},
 				{
 					name : "我是图片3",
 					anchorHref : "https://www.taobao.com/",
-					imageUrl : "http://www.ikindness.cn/image/banner/3.jpg"
+					imageUrl : "http://static.ikindness.cn/image/banner/3.jpg"
 				},
 				{
 					name : "我是图片4",
 					anchorHref : "https://www.tmall.com/",
-					imageUrl : "http://www.ikindness.cn/image/banner/4.jpg"
+					imageUrl : "http://static.ikindness.cn/image/banner/4.jpg"
 				},
 				{
 					name : "我是图片5",
 					anchorHref : "http://www.163.com/",
-					imageUrl : "http://www.ikindness.cn/image/banner/5.jpg"
+					imageUrl : "http://static.ikindness.cn/image/banner/5.jpg"
 				},
 				{
 					name : "我是图片6",
 					anchorHref : "http://lol.qq.com/",
-					imageUrl : "http://www.ikindness.cn/image/banner/6.jpg"
+					imageUrl : "http://static.ikindness.cn/image/banner/6.jpg"
 				}
 			];
 			let len = parseInt(req.query.len);
@@ -110,8 +110,7 @@ export default [
 			res.json(userId ? {
 				code : 0,
 				data : {
-					money : Math.round(Math.random() * Math.sqrt(userId.slice(0, 8))),
-					baseUrl : "http://www.ikindness.cn"
+					money : Math.round(Math.random() * Math.sqrt(userId.slice(0, 8)))
 				},
 				message : "success"
 			} : {
@@ -137,7 +136,7 @@ export default [
 					rate : "739",
 					sum : "739520.00",
 					amount : "2400",
-					image : "/image/fund/1-0.png"
+					image : "http://static.ikindness.cn/image/fund/1-0.png"
 				},
 				{
 					id : "1",
@@ -147,7 +146,7 @@ export default [
 					rate : "1346",
 					sum : "13467082.00",
 					amount : "12418",
-					image : "/image/fund/1-1.png"
+					image : "http://static.ikindness.cn/image/fund/1-1.png"
 				},
 				{
 					id : "2",
@@ -157,7 +156,7 @@ export default [
 					rate : "5075",
 					sum : "5075067.00",
 					amount : "30679",
-					image : "/image/fund/1-2.png"
+					image : "http://static.ikindness.cn/image/fund/1-2.png"
 				},
 				{
 					id : "3",
@@ -167,7 +166,7 @@ export default [
 					rate : "159",
 					sum : "159230.00",
 					amount : "170",
-					image : "/image/fund/1-3.png"
+					image : "http://static.ikindness.cn/image/fund/1-3.png"
 				},
 				{
 					id : "4",
@@ -177,7 +176,7 @@ export default [
 					rate : "166",
 					sum : "166410.00",
 					amount : "719",
-					image : "/image/fund/1-4.png"
+					image : "http://static.ikindness.cn/image/fund/1-4.png"
 				},
 				{
 					id : "5",
@@ -187,7 +186,7 @@ export default [
 					rate : "2639",
 					sum : "2639495.00",
 					amount : "882",
-					image : "/image/fund/1-5.png"
+					image : "http://static.ikindness.cn/image/fund/1-5.png"
 				},
 				{
 					id : "6",
@@ -197,7 +196,7 @@ export default [
 					rate : "648",
 					sum : "648160.90",
 					amount : "1337",
-					image : "/image/fund/1-6.png"
+					image : "http://static.ikindness.cn/image/fund/1-6.png"
 				},
 				{
 					id : "7",
@@ -207,7 +206,7 @@ export default [
 					rate : "271",
 					sum : "271653.00",
 					amount : "1197",
-					image : "/image/fund/1-7.png"
+					image : "http://static.ikindness.cn/image/fund/1-7.png"
 				},
 				{
 					id : "10",
@@ -217,7 +216,7 @@ export default [
 					rate : "408",
 					sum : "408582.00",
 					amount : "1729",
-					image : "/image/fund/2-0.png"
+					image : "http://static.ikindness.cn/image/fund/2-0.png"
 				},
 				{
 					id : "11",
@@ -227,7 +226,7 @@ export default [
 					rate : "750",
 					sum : "750788.00",
 					amount : "1729",
-					image : "/image/fund/2-1.png"
+					image : "http://static.ikindness.cn/image/fund/2-1.png"
 				},
 				{
 					id : "12",
@@ -237,7 +236,7 @@ export default [
 					rate : "2007",
 					sum : "2007150.00",
 					amount : "1763",
-					image : "/image/fund/2-2.png"
+					image : "http://static.ikindness.cn/image/fund/2-2.png"
 				},
 				{
 					id : "13",
@@ -247,7 +246,7 @@ export default [
 					rate : "2007",
 					sum : "2007150.00",
 					amount : "1763",
-					image : "/image/fund/2-3.png"
+					image : "http://static.ikindness.cn/image/fund/2-3.png"
 				},
 				{
 					id : "14",
@@ -257,7 +256,7 @@ export default [
 					rate : "2006",
 					sum : "2006484.00",
 					amount : "6507",
-					image : "/image/fund/2-4.png"
+					image : "http://static.ikindness.cn/image/fund/2-4.png"
 				},
 				{
 					id : "15",
@@ -267,7 +266,7 @@ export default [
 					rate : "1791",
 					sum : "1791440.00",
 					amount : "3019",
-					image : "/image/fund/2-5.png"
+					image : "http://static.ikindness.cn/image/fund/2-5.png"
 				},
 				{
 					id : "16",
@@ -277,7 +276,7 @@ export default [
 					rate : "1791",
 					sum : "1791440.00",
 					amount : "3019",
-					image : "/image/fund/2-6.png"
+					image : "http://static.ikindness.cn/image/fund/2-6.png"
 				},
 				{
 					id : "17",
@@ -287,7 +286,7 @@ export default [
 					rate : "393",
 					sum : "393881.00",
 					amount : "2659",
-					image : "/image/fund/2-7.png"
+					image : "http://static.ikindness.cn/image/fund/2-7.png"
 				},
 				{
 					id : "20",
@@ -297,7 +296,7 @@ export default [
 					rate : "187",
 					sum : "187088.00",
 					amount : "1237",
-					image : "/image/fund/3-0.png"
+					image : "http://static.ikindness.cn/image/fund/3-0.png"
 				},
 				{
 					id : "21",
@@ -307,7 +306,7 @@ export default [
 					rate : "399",
 					sum : "199690.00",
 					amount : "632",
-					image : "/image/fund/3-1.png"
+					image : "http://static.ikindness.cn/image/fund/3-1.png"
 				},
 				{
 					id : "22",
@@ -317,7 +316,7 @@ export default [
 					rate : "755",
 					sum : "75519.00",
 					amount : "271",
-					image : "/image/fund/3-2.png"
+					image : "http://static.ikindness.cn/image/fund/3-2.png"
 				},
 				{
 					id : "23",
@@ -327,7 +326,7 @@ export default [
 					rate : "129",
 					sum : "64903.00",
 					amount : "297",
-					image : "/image/fund/3-3.png"
+					image : "http://static.ikindness.cn/image/fund/3-3.png"
 				},
 				{
 					id : "24",
@@ -337,7 +336,7 @@ export default [
 					rate : "312",
 					sum : "312409.00",
 					amount : "2334",
-					image : "/image/fund/3-4.png"
+					image : "http://static.ikindness.cn/image/fund/3-4.png"
 				},
 				{
 					id : "25",
@@ -347,7 +346,7 @@ export default [
 					rate : "452",
 					sum : "226306.00",
 					amount : "807",
-					image : "/image/fund/3-5.png"
+					image : "http://static.ikindness.cn/image/fund/3-5.png"
 				},
 				{
 					id : "26",
@@ -357,7 +356,7 @@ export default [
 					rate : "129",
 					sum : "64986.00",
 					amount : "184",
-					image : "/image/fund/3-6.png"
+					image : "http://static.ikindness.cn/image/fund/3-6.png"
 				},
 				{
 					id : "27",
@@ -367,7 +366,7 @@ export default [
 					rate : "614",
 					sum : "307451.00",
 					amount : "1374",
-					image : "/image/fund/3-7.png"
+					image : "http://static.ikindness.cn/image/fund/3-7.png"
 				},
 				{
 					id : "30",
@@ -377,7 +376,7 @@ export default [
 					rate : "428",
 					sum : "342711.80",
 					amount : "1970",
-					image : "/image/fund/4-0.png"
+					image : "http://static.ikindness.cn/image/fund/4-0.png"
 				},
 				{
 					id : "31",
@@ -387,7 +386,7 @@ export default [
 					rate : "1285",
 					sum : "385695.00",
 					amount : "1305",
-					image : "/image/fund/4-1.png"
+					image : "http://static.ikindness.cn/image/fund/4-1.png"
 				},
 				{
 					id : "32",
@@ -397,7 +396,7 @@ export default [
 					rate : "1260",
 					sum : "630143.00",
 					amount : "4897",
-					image : "/image/fund/4-2.png"
+					image : "http://static.ikindness.cn/image/fund/4-2.png"
 				},
 				{
 					id : "33",
@@ -407,7 +406,7 @@ export default [
 					rate : "2591",
 					sum : "25917.00",
 					amount : "2589",
-					image : "/image/fund/4-3.png"
+					image : "http://static.ikindness.cn/image/fund/4-3.png"
 				},
 				{
 					id : "34",
@@ -417,7 +416,7 @@ export default [
 					rate : "6052",
 					sum : "181577.00",
 					amount : "1811",
-					image : "/image/fund/4-4.png"
+					image : "http://static.ikindness.cn/image/fund/4-4.png"
 				},
 				{
 					id : "35",
@@ -427,7 +426,7 @@ export default [
 					rate : "138",
 					sum : "27602.00",
 					amount : "68",
-					image : "/image/fund/4-5.png"
+					image : "http://static.ikindness.cn/image/fund/4-5.png"
 				},
 				{
 					id : "36",
@@ -437,7 +436,7 @@ export default [
 					rate : "2228",
 					sum : "222870.00",
 					amount : "1326",
-					image : "/image/fund/4-6.png"
+					image : "http://static.ikindness.cn/image/fund/4-6.png"
 				},
 				{
 					id : "37",
@@ -447,7 +446,7 @@ export default [
 					rate : "198",
 					sum : "39768.00",
 					amount : "152",
-					image : "/image/fund/4-7.png"
+					image : "http://static.ikindness.cn/image/fund/4-7.png"
 				},
 				{
 					id : "40",
@@ -457,7 +456,7 @@ export default [
 					rate : "22",
 					sum : "11178.80",
 					amount : "115",
-					image : "/image/fund/5-0.png"
+					image : "http://static.ikindness.cn/image/fund/5-0.png"
 				},
 				{
 					id : "41",
@@ -467,7 +466,7 @@ export default [
 					rate : "130",
 					sum : "65238.00",
 					amount : "331",
-					image : "/image/fund/5-1.png"
+					image : "http://static.ikindness.cn/image/fund/5-1.png"
 				},
 				{
 					id : "42",
@@ -477,7 +476,7 @@ export default [
 					rate : "113",
 					sum : "56767.00",
 					amount : "253",
-					image : "/image/fund/5-2.png"
+					image : "http://static.ikindness.cn/image/fund/5-2.png"
 				},
 				{
 					id : "43",
@@ -487,7 +486,7 @@ export default [
 					rate : "118",
 					sum : "59026.00",
 					amount : "432",
-					image : "/image/fund/5-3.png"
+					image : "http://static.ikindness.cn/image/fund/5-3.png"
 				},
 				{
 					id : "44",
@@ -497,7 +496,7 @@ export default [
 					rate : "129",
 					sum : "64980.00",
 					amount : "186",
-					image : "/image/fund/5-4.png"
+					image : "http://static.ikindness.cn/image/fund/5-4.png"
 				},
 				{
 					id : "45",
@@ -507,7 +506,7 @@ export default [
 					rate : "336",
 					sum : "168249.00",
 					amount : "45791",
-					image : "/image/fund/5-5.png"
+					image : "http://static.ikindness.cn/image/fund/5-5.png"
 				},
 				{
 					id : "46",
@@ -517,7 +516,7 @@ export default [
 					rate : "145",
 					sum : "72698.00",
 					amount : "1107",
-					image : "/image/fund/5-6.png"
+					image : "http://static.ikindness.cn/image/fund/5-6.png"
 				},
 				{
 					id : "47",
@@ -527,7 +526,7 @@ export default [
 					rate : "258",
 					sum : "129118.53",
 					amount : "996",
-					image : "/image/fund/5-7.png"
+					image : "http://static.ikindness.cn/image/fund/5-7.png"
 				},
 				{
 					id : "50",
@@ -537,7 +536,7 @@ export default [
 					rate : "21",
 					sum : "6469.00",
 					amount : "139",
-					image : "/image/fund/6-0.png"
+					image : "http://static.ikindness.cn/image/fund/6-0.png"
 				},
 				{
 					id : "51",
@@ -547,7 +546,7 @@ export default [
 					rate : "138",
 					sum : "138550.00",
 					amount : "5026",
-					image : "/image/fund/6-1.png"
+					image : "http://static.ikindness.cn/image/fund/6-1.png"
 				},
 				{
 					id : "52",
@@ -557,7 +556,7 @@ export default [
 					rate : "204",
 					sum : "204630.00",
 					amount : "32808",
-					image : "/image/fund/6-2.png"
+					image : "http://static.ikindness.cn/image/fund/6-2.png"
 				},
 				{
 					id : "53",
@@ -567,7 +566,7 @@ export default [
 					rate : "107",
 					sum : "107815.50",
 					amount : "5841",
-					image : "/image/fund/6-3.png"
+					image : "http://static.ikindness.cn/image/fund/6-3.png"
 				},
 				{
 					id : "54",
@@ -577,7 +576,7 @@ export default [
 					rate : "102",
 					sum : "16470.00",
 					amount : "1203",
-					image : "/image/fund/6-4.png"
+					image : "http://static.ikindness.cn/image/fund/6-4.png"
 				},
 				{
 					id : "55",
@@ -587,7 +586,7 @@ export default [
 					rate : "16",
 					sum : "3910.00",
 					amount : "267",
-					image : "/image/fund/6-5.png"
+					image : "http://static.ikindness.cn/image/fund/6-5.png"
 				},
 				{
 					id : "56",
@@ -597,7 +596,7 @@ export default [
 					rate : "171",
 					sum : "17168.00",
 					amount : "187",
-					image : "/image/fund/6-6.png"
+					image : "http://static.ikindness.cn/image/fund/6-6.png"
 				},
 				{
 					id : "57",
@@ -607,7 +606,7 @@ export default [
 					rate : "147",
 					sum : "22056.00",
 					amount : "766",
-					image : "/image/fund/6-7.png"
+					image : "http://static.ikindness.cn/image/fund/6-7.png"
 				}
 			];
 			res.json({
