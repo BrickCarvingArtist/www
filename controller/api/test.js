@@ -110,7 +110,8 @@ export default [
 			res.json(userId ? {
 				code : 0,
 				data : {
-					money : Math.round(Math.random() * Math.sqrt(userId.slice(0, 8)))
+					money : Math.round(Math.random() * Math.sqrt(userId.slice(0, 8))),
+					baseUrl : "http://www.ikindness.cn"
 				},
 				message : "success"
 			} : {
