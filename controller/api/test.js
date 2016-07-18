@@ -1,3 +1,4 @@
+import {sortBy} from "underscore";
 export default [
 	{
 		from : "get",
@@ -614,6 +615,571 @@ export default [
 				data : type ? data.filter((list, index) => {
 					return list.type === type;
 				}) : data,
+				message : "success"
+			});
+		}
+	},
+	{
+		from : "getProduct",
+		method : "get",
+		cross : 1,
+		signType : [0, 1, 2],
+		callback(req, res){
+			let query = req.query,
+				type = query.type,
+				min = isNaN(query.min - 0) ? 0 : query.min - 0,
+				max = isNaN(query.max - 0) ? 0 : query.max - 0,
+				sort = query.sort - 0,
+				_data;
+			sort = isNaN(sort) || !sort ? 0 : sort >> 1 ? 2 : 1
+			const data = [
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.111.8W5QwS&id=38338293816&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "LED吸顶灯卧室房间灯圆形现代简约客厅灯过道阳台灯厨卫灯饰灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i4/718158491/TB2UN.QppXXXXbBXXXXXXXXXXXX_!!718158491.jpg_400x400.jpg_.webp",
+					"price": "15.00",
+					"sold": "590",
+					"owner": "jun18677",
+					"location": "江苏常州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.116.8W5QwS&id=44042124807&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "美式乡村纯色复古墨绿色无纺布壁纸素色卧室客厅背景墙纸加厚满铺",
+					"image": "//img.alicdn.com/bao/uploaded/i2/2229334793/TB2V_W7kVXXXXXPXXXXXXXXXXXX_!!2229334793.jpg_400x400.jpg_.webp",
+					"price": "37.24",
+					"sold": "253",
+					"owner": "huanghanzy",
+					"location": "上海"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.121.8W5QwS&id=5576122091&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "现代创意新中式圆形莲荷花艺术吸顶灯饰客厅卧室过道古典田园灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1BeAhIXXXXXauXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "150.00",
+					"sold": "141",
+					"owner": "wuxueyu8",
+					"location": "广西桂林"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.126.8W5QwS&id=522973934115&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "新北欧法美式乡村复古餐厅书房酒吧阁楼现代简约过道玄关水晶吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1dNsqKpXXXXb2XpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "251.92",
+					"sold": "104",
+					"owner": "名匠灯饰",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.131.8W5QwS&id=40577313560&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "美格勒全铜吊灯欧式吊灯后现代法式奢华宫廷吊灯复式别墅酒店吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i2/2116459026/TB24S3NnVXXXXccXXXXXXXXXXXX_!!2116459026.jpg_400x400.jpg_.webp",
+					"price": "9800.00",
+					"sold": "31",
+					"owner": "铜灯汇馆",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.136.8W5QwS&id=37117264099&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "Loft北欧工业风美式乡村餐厅宜家吧台灯复古内贴镜 三头吊灯包邮",
+					"image": "//img.alicdn.com/bao/uploaded/i1/TB1sRSCKVXXXXcCXVXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "380.00",
+					"sold": "34",
+					"owner": "wangsufen1994",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.141.8W5QwS&id=38591273077&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "现代简约LED吸顶灯LED长方形客厅灯具卧室灯餐厅书房间过道灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i2/TB1y2B5IVXXXXcfXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "128.00",
+					"sold": "33",
+					"owner": "zxq15161109707",
+					"location": "江苏常州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.146.8W5QwS&id=523352135174&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "工业风吊灯loft美式乡村复古吧台吊灯铁艺创意个性单头咖啡厅吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i2/TB1oeLnKXXXXXa6XVXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "58.00",
+					"sold": "24",
+					"owner": "店铺商业照明",
+					"location": "江苏无锡"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.151.8W5QwS&id=521728848061&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "摩恩 厨房抽拉式冷热水槽水龙头MCL7594 87094 68002 87006 C/SRS",
+					"image": "//img.alicdn.com/bao/uploaded/i2/40561312/TB2URCPqpXXXXapXpXXXXXXXXXX_!!40561312.jpg_400x400.jpg_.webp",
+					"price": "598.00",
+					"sold": "258",
+					"owner": "lfmao814",
+					"location": "江苏苏州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.156.8W5QwS&id=37551841022&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "太空铝淋浴升降花洒套装莲蓬头喷雾喷头淋浴龙头套装水龙头卫浴",
+					"image": "//img.alicdn.com/bao/uploaded/i1/TB1AJiYIXXXXXcbXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "73.60",
+					"sold": "15",
+					"owner": "天天蝈蝈",
+					"location": "山东临沂"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.161.8W5QwS&id=3489895430&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "欧式蒂凡尼灯饰创意个性简约三头led餐厅灯饭厅吧台吊灯楼梯灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i3/TB1aj3lKVXXXXbcXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "321.44",
+					"sold": "108",
+					"owner": "有一家诚信网店",
+					"location": "广东江门"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.166.8W5QwS&id=36815798645&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "圆形吸顶灯 水晶吸顶灯 蝶恋花温馨无极调光主卧室客厅led吸顶灯",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1s8xuKFXXXXalXVXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "270.00",
+					"sold": "559",
+					"owner": "xiaoyale12",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.171.8W5QwS&id=521097210720&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "欧式水晶吊灯现代简约客厅吊灯大气水晶灯卧室餐厅灯美式玉石灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i2/1717921319/TB2mQ9nsXXXXXcyXXXXXXXXXXXX_!!1717921319.jpg_400x400.jpg_.webp",
+					"price": "504.06",
+					"sold": "170",
+					"owner": "年度名品",
+					"location": "浙江杭州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.176.8W5QwS&id=38996926488&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "美式吸顶灯灯具客厅灯现代简约卧室灯餐厅书房吊灯铁艺创意灯饰灯",
+					"image": "//img.alicdn.com/bao/uploaded/i2/284513512/TB2B0QYsVXXXXXlXXXXXXXXXXXX_!!284513512.jpg_400x400.jpg_.webp",
+					"price": "244.40",
+					"sold": "92",
+					"owner": "juliet0920",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.181.8W5QwS&id=40626745139&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "秒杀!现代简约LED水晶吸顶灯个性餐厅吊灯简欧客厅吊灯具卧室灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1uFnHHpXXXXbPXXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "338.00",
+					"sold": "300",
+					"owner": "winkuo",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.186.8W5QwS&id=19791335205&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "创意LED鸟巢灯吸顶灯儿童房灯具简约卧室灯书房灯蓝色地中海灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i1/TB1ntI1KpXXXXaNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "232.20",
+					"sold": "169",
+					"owner": "壹灯照明灯饰",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.191.8W5QwS&id=523051393948&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "名斯美式吸顶灯卧室简约厨房灯复古客厅过道阳台现代圆形led灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1mziwKpXXXXXWXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "88.00",
+					"sold": "150",
+					"owner": "名斯品牌店",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.196.8W5QwS&id=523375941324&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "简约现代中式浴室柜橡木落地北欧黑色卫生间洗手台面盆洗脸盆组合",
+					"image": "//img.alicdn.com/bao/uploaded/i2/90674691/TB2dsPzkpXXXXbFXXXXXXXXXXXX_!!90674691.jpg_400x400.jpg_.webp",
+					"price": "318.00",
+					"sold": "27",
+					"owner": "flyres",
+					"location": "浙江杭州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.201.8W5QwS&id=19946462182&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "现代中式荷花吊灯茶楼卧室餐厅客厅吊灯个性创意LED莲花古典灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1_DzcKFXXXXXYXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "310.00",
+					"sold": "151",
+					"owner": "暖流丝丝",
+					"location": "广西桂林"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.206.8W5QwS&id=22266739735&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "LED吸顶灯客厅灯具大气现代简约卧室长方形办公室灯餐厅遥控灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i1/833374465/TB2TB6plFXXXXadXpXXXXXXXXXX_!!833374465.jpg_400x400.jpg_.webp",
+					"price": "50.40",
+					"sold": "141",
+					"owner": "文博家居灯饰",
+					"location": "江苏常州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.211.8W5QwS&id=528960913402&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "led吸顶灯简约现代 卧室灯具遥控餐厅灯创意主卧灯 正方形客厅灯",
+					"image": "//img.alicdn.com/bao/uploaded/i4/408364718/TB2AnUfmpXXXXaxXXXXXXXXXXXX_!!408364718.jpg_400x400.jpg_.webp",
+					"price": "138.60",
+					"sold": "120",
+					"owner": "皮皮嘿儿",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.216.8W5QwS&id=529327421803&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "吸顶灯客厅灯长方形大气简约实木led调光仿羊皮卧室餐厅中式灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i1/2398052170/TB2s4a5mpXXXXaSXpXXXXXXXXXX_!!2398052170.jpg_400x400.jpg_.webp",
+					"price": "358.00",
+					"sold": "48",
+					"owner": "木皇木灯灯饰",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.221.8W5QwS&id=16472042437&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "正品led吸顶灯欧式圆形遥控调光卧室灯客厅灯阳台餐厅灯灯具包邮",
+					"image": "//img.alicdn.com/bao/uploaded/i3/880957421/TB2UhvhqVXXXXaJXXXXXXXXXXXX_!!880957421.jpg_400x400.jpg_.webp",
+					"price": "72.00",
+					"sold": "117",
+					"owner": "琪兰家美",
+					"location": "江苏常州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.225.8W5QwS&id=525932150010&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "JOMOO九牧 冷热面盆龙头 可旋转洗手池洗脸盆水龙头32274-101",
+					"image": "//img.alicdn.com/bao/uploaded/i2/TB1j2wnLXXXXXbGXVXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "229.00",
+					"sold": "32",
+					"owner": "田心尔日",
+					"location": "江苏南京"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.230.8W5QwS&id=522764670012&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "餐厅吊灯三头时尚个性实木吊灯北欧宜家创意吧台餐厅灯过道灯单头",
+					"image": "//img.alicdn.com/bao/uploaded/i1/2664136665/TB2PXsGqVXXXXXpXXXXXXXXXXXX_!!2664136665.jpg_400x400.jpg_.webp",
+					"price": "69.00",
+					"sold": "89",
+					"owner": "奥美嘉家居",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.235.8W5QwS&id=43876918787&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "现代简约实木led客厅吸顶灯现代榻榻米羊皮长方形无极调光卧室灯",
+					"image": "//img.alicdn.com/bao/uploaded/i3/1059643234/TB2NVrXppXXXXbuXpXXXXXXXXXX_!!1059643234.jpg_400x400.jpg_.webp",
+					"price": "218.00",
+					"sold": "155",
+					"owner": "森木照明",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.240.8W5QwS&id=524308611938&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "简约餐厅吊灯单头吊灯现代单个创意灯罩工业风艺术装饰个性小吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i3/779892903/TB28REhpVXXXXayXpXXXXXXXXXX_!!779892903.jpg_400x400.jpg_.webp",
+					"price": "19.80",
+					"sold": "1006",
+					"owner": "静静守候y",
+					"location": "江苏常州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.245.8W5QwS&id=20322868585&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "鼎赛面盆龙头 冷热水龙头全铜台上盆水龙头洗脸盆加高龙头单孔",
+					"image": "//img.alicdn.com/bao/uploaded/i3/847269152/TB2WKQOpVXXXXX5XXXXXXXXXXXX_!!847269152.jpg_400x400.jpg_.webp",
+					"price": "29.00",
+					"sold": "78",
+					"owner": "龙头先生",
+					"location": "浙江温州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.250.8W5QwS&id=44306811613&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "欧式水晶田园矮户型卧室吸顶灯具 简欧大气客厅简约饭厅树脂吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i1/TB13zBQIVXXXXa.apXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "380.00",
+					"sold": "114",
+					"owner": "shenwenli82",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.255.8W5QwS&id=520564336623&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "美式乡村卧室餐厅客厅铁艺复古吊灯具北欧简约圆形蜡烛台大气灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i1/850732448/TB2IBosppXXXXaFXpXXXXXXXXXX_!!850732448.jpg_400x400.jpg_.webp",
+					"price": "388.00",
+					"sold": "64",
+					"owner": "星星知我心031",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.260.8W5QwS&id=526177812146&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "意大利Aim服装店创意咖啡厅摄影工作室时尚餐厅酒吧悬挂小鼓吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i1/TB1tfneKVXXXXX_aXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "133.20",
+					"sold": "15",
+					"owner": "liuqiantaojin",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.265.8W5QwS&id=532816943064&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "美式乡村墙纸卧室复古怀旧环保纯纸纯色素色墙纸壁纸客厅满铺做旧",
+					"image": "//img.alicdn.com/bao/uploaded/i4/678050078/TB2Kx.OpFXXXXXEXFXXXXXXXXXX_!!678050078.jpg_400x400.jpg_.webp",
+					"price": "58.00",
+					"sold": "37",
+					"owner": "zxxzh1101",
+					"location": "上海"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.270.8W5QwS&id=527880872957&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "卫浴 简约现代橡木浴室柜组合 小户型洗脸洗手洗漱台盆卫生间吊柜",
+					"image": "//img.alicdn.com/bao/uploaded/i2/838483646/TB2bJzDlXXXXXcmXXXXXXXXXXXX_!!838483646.jpg_400x400.jpg_.webp",
+					"price": "770.00",
+					"sold": "116",
+					"owner": "芭芘娃娃iq",
+					"location": "浙江杭州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.275.8W5QwS&id=533268257437&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "仿砖块墙纸白色砖纹简约现代3d立体客厅电视背景地中海文化石壁纸",
+					"image": "//img.alicdn.com/bao/uploaded/i3/102544274/TB2oHYvqXXXXXXIXpXXXXXXXXXX_!!102544274.jpg_400x400.jpg_.webp",
+					"price": "93.10",
+					"sold": "60",
+					"owner": "izcqi",
+					"location": "浙江杭州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.280.8W5QwS&id=18261447921&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "双层布艺吸顶灯 卧室房间客厅餐厅灯具 北欧简约创意时尚家装灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i3/TB1iD3NKpXXXXbCXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "247.23",
+					"sold": "20",
+					"owner": "点一灯饰",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.285.8W5QwS&id=522135207093&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "乐派智能除雾橡木浴室柜组合吊柜洁具洗手盆柜整体台盆柜洗漱台",
+					"image": "//img.alicdn.com/bao/uploaded/i2/105003317/TB21qzvqVXXXXanXpXXXXXXXXXX_!!105003317.jpg_400x400.jpg_.webp",
+					"price": "1633.14",
+					"sold": "30",
+					"owner": "carefreeshoal",
+					"location": "浙江杭州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.290.8W5QwS&id=531330346267&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "达浪 304不锈钢厨房洗菜盆水槽双槽套餐 洗菜池洗碗池水池洗碗盆",
+					"image": "//img.alicdn.com/bao/uploaded/i4/98119349/TB2G8ckopXXXXayXXXXXXXXXXXX_!!98119349.jpg_400x400.jpg_.webp",
+					"price": "338.40",
+					"sold": "20",
+					"owner": "cody_",
+					"location": "广东佛山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.295.8W5QwS&id=524349912337&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "莫克 长方形客厅灯现代简约LED吸顶灯铝材创意卧室灯极简餐厅灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i3/99076760/TB2qY_1qFXXXXXfXXXXXXXXXXXX_!!99076760.jpg_400x400.jpg_.webp",
+					"price": "99.00",
+					"sold": "16",
+					"owner": "隐居山人",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.300.8W5QwS&id=37875577986&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "欧式铁艺8头客厅吊灯美式复古6头卧室吸顶灯具地中海餐厅书房灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1VmrbHFXXXXcBXXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "88.00",
+					"sold": "80",
+					"owner": "最佳2012",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.305.8W5QwS&id=17323598605&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "北欧美式乡村奢华工业创意复古水晶吸顶灯卧室客餐厅铁艺过道灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i2/112496451/TB2MzofqFXXXXaUXXXXXXXXXXXX_!!112496451.jpg_400x400.jpg_.webp",
+					"price": "328.50",
+					"sold": "47",
+					"owner": "sindyone2008",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.310.8W5QwS&id=12325587731&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "JOMOO九牧 五功能手提花洒单头 手持淋浴花洒喷头S02015-2C11-2",
+					"image": "//img.alicdn.com/bao/uploaded/i2/TB1RNXIFVXXXXazXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "38.70",
+					"sold": "1488",
+					"owner": "weidacao",
+					"location": "江苏南京"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.315.8W5QwS&id=36090806909&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "德国抽拉厨房水龙头冷热全铜 水槽洗菜盆伸缩抽拉式水龙头 可旋转",
+					"image": "//img.alicdn.com/bao/uploaded/i1/TB1NqJfKFXXXXbuXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "305.28",
+					"sold": "43",
+					"owner": "出口高端卫浴",
+					"location": "广东江门"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.320.8W5QwS&id=520778525624&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "八角吸顶灯黑色铁艺过道生活阳台吸顶灯小美式吸顶灯简洁过道灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i4/671436177/TB2J_DTlpXXXXapXXXXXXXXXXXX_!!671436177.jpg_400x400.jpg_.webp",
+					"price": "98.00",
+					"sold": "14",
+					"owner": "可苦可乐888",
+					"location": "重庆"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.325.8W5QwS&id=40322353249&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "五角星吊灯现代简约个性创意餐厅卧室走廊过道玄关阳台星星吸顶灯",
+					"image": "//img.alicdn.com/bao/uploaded/i3/1575643101/TB2gX96rVXXXXc2XXXXXXXXXXXX_!!1575643101.jpg_400x400.jpg_.webp",
+					"price": "70.00",
+					"sold": "908",
+					"owner": "雷仕达灯饰",
+					"location": "广东惠州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.330.8W5QwS&id=15880921391&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "创意美式铁艺公主卧室儿童房灯具韩式田园吊灯客厅欧式led餐厅灯",
+					"image": "//img.alicdn.com/bao/uploaded/i2/T1219EFyJdXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "197.60",
+					"sold": "40",
+					"owner": "youngsyhl",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.335.8W5QwS&id=522627600084&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "北欧创意个性铁艺服装店橱窗吊灯过道楼梯吧台咖啡厅前台艺术吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i2/TB1ToAjJFXXXXXxXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "79.00",
+					"sold": "10",
+					"owner": "天缘灯饰",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.340.8W5QwS&id=521810524384&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "极有家发现 脚踏式水龙头开关 医用脚踩龙头全铜阀体【质保五年】",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1ufZnJFXXXXbNXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "75.00",
+					"sold": "7",
+					"owner": "qiuqin20022002",
+					"location": "福建泉州"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.345.8W5QwS&id=521778700688&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "奥朵吊灯饰旗舰店餐厅灯三头创意现代吧台餐桌个性饭厅灯具 20274",
+					"image": "//img.alicdn.com/bao/uploaded/i2/TB1YdpSMXXXXXbfXVXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "329.00",
+					"sold": "9",
+					"owner": "回忆匆匆",
+					"location": "上海"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.350.8W5QwS&id=5118683459&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "JOMOO卫浴 手持喷头 冷热淋浴龙头套装 混水阀3576/3577-050",
+					"image": "//img.alicdn.com/bao/uploaded/i3/200055994/TB2lL9ZoVXXXXbwXXXXXXXXXXXX_!!200055994.jpg_400x400.jpg_.webp",
+					"price": "189.00",
+					"sold": "7",
+					"owner": "bobo3887",
+					"location": "上海"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.355.8W5QwS&id=531599203982&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "中式吸顶灯长方形LED客厅灯仿古实木羊皮灯卧室书房餐厅灯具客厅",
+					"image": "//img.alicdn.com/bao/uploaded/i2/763250897/TB2ecQ9oFXXXXawXFXXXXXXXXXX_!!763250897.jpg_400x400.jpg_.webp",
+					"price": "389.00",
+					"sold": "29",
+					"owner": "蜀山月色",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.360.8W5QwS&id=39133766303&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "现代个性飞机儿童灯具创意卡通男孩房间灯饰女孩卧室灯吸顶灯简约",
+					"image": "//img.alicdn.com/bao/uploaded/i4/106946939/TB2Xc88sFXXXXXeXpXXXXXXXXXX_!!106946939.jpg_400x400.jpg_.webp",
+					"price": "250.00",
+					"sold": "39",
+					"owner": "seong1989oo",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.365.8W5QwS&id=521683736351&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "德国手工水槽单槽 厨房304不锈钢加厚大单槽套餐台下洗菜盆水池",
+					"image": "//img.alicdn.com/bao/uploaded/i4/1044381214/TB28pSooFXXXXbJXXXXXXXXXXXX_!!1044381214.jpg_400x400.jpg_.webp",
+					"price": "218.40",
+					"sold": "1549",
+					"owner": "七格格1997",
+					"location": "广东佛山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.370.8W5QwS&id=522830168921&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "实木中式吸顶灯客厅灯长方形大气大灯led办公室灯遥控主卧室灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i2/TB1q5ByJVXXXXbrXFXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "668.00",
+					"sold": "26",
+					"owner": "爱尔伦灯饰",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.375.8W5QwS&id=524980279246&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "玫瑰LED吸顶灯花形个性房间灯卧室灯灯创意客厅灯具温馨浪漫遥控",
+					"image": "//img.alicdn.com/bao/uploaded/i4/TB1_j9qKVXXXXX2XpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "422.28",
+					"sold": "15",
+					"owner": "wuyue520131498",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.380.8W5QwS&id=37119725422&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "蔓德兰9000转耐磨E0防水木地板地暖强化地板12mm复合地板包邮",
+					"image": "//img.alicdn.com/bao/uploaded/i2/371422476/TB2ErH4nXXXXXbtXXXXXXXXXXXX_!!371422476.jpg_400x400.jpg_.webp",
+					"price": "59.00",
+					"sold": "362",
+					"owner": "古子仙",
+					"location": "山东青岛"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.385.8W5QwS&id=520800121566&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "金幻现代简约led吸顶灯 卧室灯客厅灯阳台灯过道灯餐厅灯圆形灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i1/TB1yucGIpXXXXXuXXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg_.webp",
+					"price": "38.00",
+					"sold": "13",
+					"owner": "摩天商海",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.390.8W5QwS&id=44849499819&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "美式乡村复古铁艺水晶吊灯 五头客厅卧室餐厅温馨地中海蜡烛灯具",
+					"image": "//img.alicdn.com/bao/uploaded/i4/582026021/TB2pmydspXXXXbNXXXXXXXXXXXX_!!582026021.jpg_400x400.jpg_.webp",
+					"price": "551.00",
+					"sold": "27",
+					"owner": "纱布帆",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.395.8W5QwS&id=521624863950&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "集美 新款北欧简约现代 loft复古吧台 餐厅客厅个性创意玻璃吊灯",
+					"image": "//img.alicdn.com/bao/uploaded/i3/85888168/TB2dXrDqXXXXXaKXXXXXXXXXXXX_!!85888168.jpg_400x400.jpg_.webp",
+					"price": "118.00",
+					"sold": "37",
+					"owner": "boyan_1202",
+					"location": "广东中山"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.400.8W5QwS&id=13946279204&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "热水器混水阀暗装 全铜淋浴龙头花洒套装 洗澡冷热水龙头通用配件",
+					"image": "//img.alicdn.com/bao/uploaded/i4/350264101/TB2gTtanFXXXXbGXpXXXXXXXXXX_!!350264101.jpg_400x400.jpg_.webp",
+					"price": "48.60",
+					"sold": "644",
+					"owner": "全贝全",
+					"location": "江西南昌"
+				},
+				{
+					"href": "//item.taobao.com/item.htm?spm=5704.7747413.12188.405.8W5QwS&id=528615600985&scm=1029.minilist-17.1.27&ppath=&sku=&ug=#detail",
+					"name": "创意儿童卧室灯温馨浪漫田园房间灯圆形简约现代艺术led吸顶灯饰",
+					"image": "//img.alicdn.com/bao/uploaded/i2/2835723327/TB2oIsappXXXXXBXXXXXXXXXXXX_!!2835723327.jpg_400x400.jpg_.webp",
+					"price": "238.00",
+					"sold": "57",
+					"owner": "卡梵家居生活体验馆",
+					"location": "广东中山"
+				}
+			];
+			_data = isNaN(type - 0) ? data : data.filter((list, index) => list.type === type);
+			_data = sort >> 1 ? sortBy(_data, list => - list.price) : sort ? sortBy(_data, list => list.price) : _data;
+			_data = _data.filter((list, index) => list.price >= min && list.price <= max);
+			res.json({
+				code : 0,
+				data : _data,
 				message : "success"
 			});
 		}
