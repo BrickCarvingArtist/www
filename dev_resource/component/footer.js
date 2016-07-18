@@ -23,7 +23,7 @@ export default class Footer extends Component{
 						{legal.map((list, index) => {
 							return (
 								<p key={index}>
-									<a href={list.href} key={index} dangerouslySetInnerHTML={{__html : list.name}}></a>
+									<a className={list.className} href={list.href} key={index} dangerouslySetInnerHTML={{__html : list.name}}></a>
 								</p>
 							);
 						})}
@@ -60,6 +60,11 @@ Footer.defaultProps = {
 		{
 			name : "浙ICP备15038011号",
 			href : "http://icp.chinaz.com/info?q=%E6%B5%99ICP%E5%A4%8715038011%E5%8F%B7"
+		},
+		{
+			className : "cnzz",
+			name : "站长统计",
+			href : "http://www.cnzz.com/stat/website.php?web_id=1253385701"
 		}
 	]
 };
