@@ -609,9 +609,13 @@ export default [
 					image : "/image/fund/6-7.png"
 				}
 			];
-			res.json(type ? data.filter((list, index) => {
-				return list.type === type;
-			}) : data);
+			res.json({
+				code : 0,
+				data : type ? data.filter((list, index) => {
+					return list.type === type;
+				}) : data,
+				message : "success"
+			});
 		}
 	}
 ];
