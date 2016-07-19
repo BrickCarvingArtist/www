@@ -628,7 +628,7 @@ export default [
 			let query = req.query,
 				type = query.type,
 				min = isNaN(query.min - 0) ? 0 : query.min - 0,
-				max = isNaN(query.max - 0) ? 0 : query.max - 0,
+				max = isNaN(query.max - 0) ? Math.pow(10, 8) : query.max - 0,
 				sort = query.sort - 0,
 				_data;
 			sort = isNaN(sort) || !sort ? 0 : sort >> 1 ? 2 : 1
