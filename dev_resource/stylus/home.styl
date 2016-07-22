@@ -3,6 +3,8 @@
 @import "header"
 @import "footer"
 @import "banner"
+.full
+	margin-top 10px
 .facade
 	float left
 	width 100%
@@ -38,6 +40,41 @@
 				font-size 14px
 				line-height 1.2
 				color rgb(234, 234, 234)
+.news
+	.w1200
+		margin 0 auto
+		padding 15px 0
+		overflow hidden
+		border-bottom 1px dashed rgb(234, 234, 234)
+		> div
+			float left
+			h1
+				margin-bottom 4px
+				font-size 18px
+				line-height 2
+				font-weight bold
+				border-bottom 2px solid rgb(234, 234, 234)
+			a
+				font-size 14px
+				line-height 24px
+				&:hover
+					color rgb(64, 128, 255)
+			&.left
+				margin-right 20px
+				width 300px
+			&.center
+				margin-right 20px
+				width 660px
+				p
+					float left
+					padding-right 20px
+					width (@width/2)
+					overflow hidden
+					white-space nowrap
+					text-overflow ellipsis
+			&.right
+				width 200px
+			
 .gallary
 	padding-bottom 3px
 	overflow hidden
@@ -47,7 +84,7 @@
 			text-align center
 			font-size 28px
 			font-weight bold
-			line-height 40px
+			line-height 2
 			color rgb(64, 128, 255)
 		.case
 			position relative

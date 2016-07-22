@@ -1,22 +1,22 @@
 import {requestJavaServer} from "./util";
-import info from "./info";
-import user from "./user";
-import manage from "./manage";
+import article from "./article";
+import news from "./news";
+import library from "./library";
 import stream from "./stream";
 import upload from "./upload";
-import message from "./message";
+import other from "./other";
 import test from "./test";
 const
 	Enum = {
-		info,
-		user,
-		manage,
+		article,
+		news,
+		library,
 		stream,
 		upload,
-		message,
+		other,
 		test
 	},
-	Route = user.concat(manage).concat(stream).concat(message),
+	Route = article.concat(news).concat(library).concat(stream).concat(upload).concat(other).concat(test),
 	Router = (router) => {
 		let reqType;
 		for(let i in Enum){

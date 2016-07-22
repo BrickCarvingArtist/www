@@ -620,6 +620,21 @@ export default [
 		}
 	},
 	{
+		from : "getOpen",
+		method : "get",
+		cross : 1,
+		signType : [0, 1, 2],
+		callback(req, res){
+			res.json({
+				code : 0,
+				data : {
+
+				},
+				message : "success"
+			});
+		}
+	},
+	{
 		from : "getProduct",
 		method : "get",
 		cross : 1,

@@ -11,24 +11,20 @@ class Category extends Component{
 		return (
 			<div className="category">
 				{
-					option.map((list, index) => {
-						return (
-							<div className="section" key={index}>
-								<a className="sup" href={list.href} target="_blank">
-									{list.name}
-								</a>
-								{
-									list.set.map((list, index) => {
-										return (
-											<a className="sub" href={list.href} target="_blank" key={index}>
-												{list.name}
-											</a>
-										);
-									})
-								}
-							</div>
-						);
-					})
+					option.map((list, index) => (
+						<div className="section" key={index}>
+							<a className="sup" href={list.href} target="_blank">
+								{list.name}
+							</a>
+							{
+								list.set.map((list, index) => (
+									<a className="sub" href={list.href} target="_blank" key={index}>
+										{list.name}
+									</a>
+								))
+							}
+						</div>
+					))
 				}
 			</div>
 		);
@@ -128,6 +124,95 @@ Category.defaultProps = {
 		}
 	]
 };
+class News extends Component{
+	constructor(props){
+		super(props);
+		this.state = props;
+	}
+	componentWillMount(){
+		fetch("/api/news/fetch?length=3").then(res => res.status === 200 ? res.json() : {
+			code : 0,
+			data : null,
+			message : "wrong"
+		}).then(data => {
+			this.setState({
+				news : data.data
+			});
+		});
+		fetch("/api/article/fetch?length=6").then(res => res.status === 200 ? res.json() : {
+			code : 0,
+			data : null,
+			message : "wrong"
+		}).then(data => {
+			this.setState({
+				article : data.data
+			});
+		});
+		fetch("/api/library/fetch?length=3").then(res => res.status === 200 ? res.json() : {
+			code : 0,
+			data : null,
+			message : "wrong"
+		}).then(data => {
+			this.setState({
+				library : data.data
+			});
+		});
+	}
+	render(){
+		let state = this.state,
+			news = state.news || [],
+			article = state.article || [],
+			library = state.library || [];
+		return (
+			<div className="news full">
+				<div className="w1200">
+					<div className="left">
+						<h1>
+							<a href="/news" target="_blank">新闻公告</a>
+						</h1>
+						{
+							news.map((list, index) => (
+								<p>
+									<a href={`/news/${list.id}`} target="_blank">
+										{list.title}
+									</a>
+								</p>
+							))
+						}
+					</div>
+					<div className="center">
+						<h1>
+							<a href="/article" target="_blank">原创文章</a>
+						</h1>
+						{
+							article.map((list, index) => (
+								<p>
+									<a href={`/article/#${list.id}`} target="_blank">
+										{list.title}
+									</a>
+								</p>
+							))
+						}
+					</div>
+					<div className="right">
+						<h1>
+							<a href="/library" target="_blank">参考资料</a>
+						</h1>
+						{
+							library.map((list, index) => (
+								<p key={index}>
+									<a href={`http://static.ikindness.cn/library/${encodeURI(list.title)}.pdf`} target="_blank">
+										{list.title}
+									</a>
+								</p>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		);
+	}
+}
 class Gallery extends Component{
 	constructor(props){
 		super(props);
@@ -139,24 +224,22 @@ class Gallery extends Component{
 				<div className="w1200">
 					<h1>课程纵览</h1>
 					{
-						option.map((list, index) => {
-							return (
-								<a className="case" href={list.anchorHref} title={list.name} style={
-									{
-										backgroundImage : `url(${list.imgSrc})`
-									}
-								} key={index}>
-									<div className="detail">
-										<strong>
-											{list.name}
-										</strong>
-										<p>
-											{list.description}
-										</p>
-									</div>
-								</a>
-							);
-						})
+						option.map((list, index) => (
+							<a className="case" href={list.anchorHref} title={list.name} style={
+								{
+									backgroundImage : `url(${list.imgSrc})`
+								}
+							} key={index}>
+								<div className="detail">
+									<strong>
+										{list.name}
+									</strong>
+									<p>
+										{list.description}
+									</p>
+								</div>
+							</a>
+						))
 					}
 				</div>
 			</div>
@@ -257,6 +340,7 @@ export class Page extends Component{
 						<Category />
 					</div>
 				</div>
+				<News />
 				<Gallery />
 				<Footer />
 			</div>

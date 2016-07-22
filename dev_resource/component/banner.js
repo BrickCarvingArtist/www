@@ -1,40 +1,20 @@
 import React, {Component} from "react";
+import fetch from "isomorphic-fetch";
 class Button extends Component{
 	constructor(props){
 		super(props);
-		let userClass = this.props.userClass.props.userClass;
+		this.state = props;
 		this.handleClick = () => {
-			userClass.setState({
-				index : this.props.index
-			});
+			this.state.clickEvent(props.index);
 		};
 	}
-	render(){
-		let props = this.props,
-			index = props.index,
-			currentIndex = props.userClass.props.userClass.state.index;
-		return (
-			<em className={index === currentIndex ? "current" : null} key={index} onClick={this.handleClick}></em>
-		);
-	}
-}
-class Indicator extends Component{
-	constructor(props){
-		super(props);
+	componentWillReceiveProps(nextProps){
+		this.setState(nextProps);
 	}
 	render(){
-		let userClass = this.props.userClass,
-			option = userClass.props.option;
+		let state = this.state;
 		return (
-			<div className="indicator">
-				{
-					option.map((list, index) => {
-						return (
-							<Button index={index} userClass={this} key={index} />
-						);
-					})
-				}
-			</div>
+			<em className={state.index === state.currentIndex ? "current" : null} onClick={this.handleClick}></em>
 		);
 	}
 }
@@ -42,12 +22,19 @@ export default class Banner extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			index : 0
+			index : 0,
+			option : []
+		};
+		this.handleClick = index => {
+			console.log(index)
+			this.setState({
+				index 
+			});
 		};
 	}
 	auto(){
 		let t, index,
-			optionLen = this.props.option.length;
+			optionLen = this.state.option.length;
 		const change = () => {
 			t = setTimeout(() => {
 				clearTimeout(t);
@@ -62,41 +49,43 @@ export default class Banner extends Component{
 		};
 		change();
 	}
-	componentDidMount(){
-		this.auto();
+	componentWillMount(){
+		fetch("/api/other/getBanner").then(res => (
+			res.status === 200 ? res.json() : {
+				code : 400,
+				data : null,
+				message : "wrong"
+			}
+		)).then(data => {
+			this.setState({
+				option : data.data
+			}, () => {
+				this.auto();
+			});
+		});
 	}
 	render(){
-		let option = this.props.option,
+		let option = this.state.option,
 			currentIndex = this.state.index;
 		return (
 			<div className={`banner ${this.props.type}`}>
 				{
-					option.map((list, index) => {
-						return (
-							<a className={`img${index === currentIndex ? " current" : ""}`} title={list.name} href={list.anchorHref} style={
-								{
-									backgroundImage : `url(${list.imgSrc})`
-								}
-							} target="_blank" key={index}></a>
-						);
-					})
+					option.map((list, index) => (
+						<a className={`img${index === currentIndex ? " current" : ""}`} title={list.name} href={list.anchorHref} style={
+							{
+								backgroundImage : `url(${list.imgSrc})`
+							}
+						} target="_blank" key={index}></a>
+					))
 				}
-				<Indicator userClass={this} />
+				<div className="indicator">
+					{
+						option.map((list, index) => (
+							<Button index={index} currentIndex={currentIndex} clickEvent={this.handleClick} key={index} />
+						))
+					}
+				</div>
 			</div>
 		);
 	}
 }
-Banner.defaultProps = {
-	option : [
-		{
-			name : "砖雕艺术馆",
-			anchorHref : "/",
-			imgSrc : "http://static.ikindness.cn/image/banner/1.png"
-		},
-		{
-			name : "砖雕科学馆",
-			anchorHref : "http://tech.ikindness.cn/",
-			imgSrc : "http://static.ikindness.cn/image/banner/2.png"
-		}
-	]
-};
