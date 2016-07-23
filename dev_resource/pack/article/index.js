@@ -9,6 +9,7 @@ class FixedNav extends Component{
 					<a className="btn left" href="/">首页</a>
 					<Link className="btn left" to="/">精选</Link>
 					<a className="btn right">顶部</a>
+					<Link className="btn right" to="/manage">编辑</Link>
 				</div>
 			</div>
 		);
@@ -101,13 +102,6 @@ class Article extends Component{
 		);
 	}
 }
-class Edit extends Component{
-	render(){
-		return (
-			<div></div>
-		);
-	}
-}
 class Page extends Component{
 	render(){
 		return (
@@ -119,17 +113,12 @@ class Page extends Component{
 	}
 }
 export const routes = (
-	<Router history={hashHistory}>
-		<Route component={Page}>
-			<Route path="/" component={Home} />
-			<Route path="/:id" component={Article} />
-			<Route path="/manage" component={Edit} />
-		</Route>
-	</Router>
+	<Route component={Page}>
+		<Route path="/" component={Home} />
+		<Route path=":id" component={Article} />
+	</Route>
 );
-export const init = render => {
-	render(
-		routes,
-		document.querySelector(".main")
-	);
-};
+export const init = render => render(
+	<Router routes={routes} history={hashHistory} />,
+	document.querySelector(".main")
+);

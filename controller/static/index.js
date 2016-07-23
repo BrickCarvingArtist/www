@@ -1,9 +1,9 @@
 import React, {createFactory} from "react";
 import {renderToString} from "react-dom/server";
 import {match, RouterContext} from "react-router";
-import fetch from "isomorphic-fetch";
 import {Page as home} from "../../dev_resource/pack/home";
 import {routes as article} from "../../dev_resource/pack/article";
+import lost from "../../dev_resource/component/lost";
 const Corp = "-砖雕艺术馆",
 	ViewModel = "./index",
 	Enum = [
@@ -53,10 +53,10 @@ const Corp = "-砖雕艺术馆",
 						// "/css/column.css"
 					],
 					script : [
-						// "/js/column.js"
+						// "/js/lost.js"
 					],
 					title : `努力建设中...${Corp}`,
-					page : "努力建设中..."//renderToString(createFactory(column)({}))
+					page : renderToString(createFactory(lost)())
 				});
 			}
 		}

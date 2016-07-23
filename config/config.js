@@ -7,7 +7,7 @@ const WebpackDevServerConfig = {
 	},
 	HostConfig = {
 		//Tip : domain
-		hostName : "dev2.qjdchina.com",
+		hostName : "dev.ikindness.com",
 		//Tip : 后端nginx服务IP
 		host : "10.1.1.62",
 		//Tip : 后端nginx服务端口

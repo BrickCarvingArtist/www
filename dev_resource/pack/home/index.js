@@ -347,9 +347,7 @@ export class Page extends Component{
 		);
 	}
 }
-export const init = render => {
-	render(
-		<Page />,
-		document.querySelector(".main")
-	);
-};
+export const init = render => render(
+	<Page />,
+	document.querySelector(".main")
+);
