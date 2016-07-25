@@ -37,7 +37,7 @@ const data = [
 			+ "<p>错误代码:666()</p>"
 			+ "<p>报错信息:<strong>Uncaught TypeError: 666 is not a function</strong></p>"
 			+ "<p>解决方案:<b>666不是一个方法。请检查报错处被以方法形式执行调用的表达式。</b></p>"
-			+ "<h2>4.<strong>Uncaught SyntaxError:</strong><em>未被catch捕获的语法错误</em></h2>"
+			+ "<h2>4.<strong>Uncaught SyntaxError</strong><em>未被catch捕获的语法错误</em></h2>"
 			+ "<p>错误代码:233.233.233</p>"
 			+ "<p>报错信息:<strong>Uncaught SyntaxError: Unexpected number</strong></p>"
 			+ "<p>解决方法:<b>不被期望的数字。没有.数字来获取对象的属性值的语法，使用正确的语法编写代码。</b></p>"
@@ -56,7 +56,11 @@ const data = [
 			+ "<p>错误代码:JSON.parse(\"six\")</p>"
 			+ "<p>报错信息:<strong>Uncaught SyntaxError: Unexpected token s in JSON at position 0</strong></p>"
 			+ "<p>解决方法:<b>不被期望的在JSON中索引为0的位置出现的字符s。JSON.parse是将JSON格式的字符串转换为JSON对象，使用正确的语法编写代码。</b></p>"
-			+ "<h2>5.<strong>Failed to load resource</strong><em>加载资源失败</em></h2>"
+			+ "<h2>5.<strong>Uncaught RangeError</strong><em>不被catch捕获的语法围度错误</em></h2>"
+			+ "<p>错误代码:function a(){return a();};a();</p>"
+			+ "<p>报错信息:<strong>Uncaught RangeError: Maximum call stack size exceeded</strong></p>"
+			+ "<p>解决方法:<b>最多的调用次数超出内存限额，即内存溢出。检查是否有无节制调用递归方法。</b></p>"
+			+ "<h2>6.<strong>Failed to load resource</strong><em>加载资源失败</em></h2>"
 			+ "<p>报错信息:<strong>Failed to load resource: net::ERR_CACHE_MISS</strong></p>"
 			+ "<p>解决方案:<b>缓存遗失。控制台在晚于页面加载完成后被打开时找不到预先写入页面的缓存，刷新页面。</b></p>"
 			+ "<p>报错信息:<strong>Failed to load resource: net::ERR_CONNECTION_TIMED_OUT</strong></p>"
@@ -66,7 +70,7 @@ const data = [
 			+ "<p>报错信息:<strong>net::ERR_NAME_NOT_RESOLVED</strong></p>"
 			+ "<p>解决方案:<b>某名称问题未被解决。无法加载到客户端对DNS解析内容进行缓存的数据。</b></p>"
 			+ "<p>报错信息:<strong>net::ERR_INTERNET_DISCONNECTED</strong></p>"
-			+ "<p>解决方案:<b>internet网络失去连接。恭喜你断网了。</b></p>" ,
+			+ "<p>解决方案:<b>internet网络失去连接。恭喜你断网了。</b></p>",
 		image : ["http://static.ikindness.cn/image/article/2.png"]
 	},
 	{

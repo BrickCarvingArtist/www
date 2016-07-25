@@ -9,7 +9,6 @@ class FixedNav extends Component{
 					<a className="btn left" href="/">首页</a>
 					<Link className="btn left" to="/">精选</Link>
 					<a className="btn right">顶部</a>
-					<Link className="btn right" to="/manage">编辑</Link>
 				</div>
 			</div>
 		);
