@@ -112,7 +112,9 @@ class Page extends Component{
 	}
 }
 export const routes = (
-	<Route component={Page}>
+	<Route component={Page} keywords={
+		["Chrome", "浏览器", "控制台", "报错信息", "js", "javascript", "JavaScript"]
+	}>
 		<Route path="/" component={Home} />
 		<Route path=":id" component={Article} />
 	</Route>
