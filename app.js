@@ -17,5 +17,6 @@ app.use(express.static(`${__dirname}/resource`, {
 }));
 app.use(RouterApi(router));
 app.use(RouterStatic(router));
-app.listen(port);
-console.log(`Server started on port ${port}`);
+app.listen(port, () => {
+	console.log(`Server started on port ${port}`);
+});
