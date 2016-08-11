@@ -84,7 +84,7 @@ const data = [
 			+ "<p>报错信息:<strong>Uncaught SyntaxError: 'super' keyword unexpected here</strong></p>"
 			+ "<p>解决方案:<b>关键字'super'出现在当前位置是不被期望的。子类的构造函数中才能用到super。</b></p>"
 			+ "<h2>5.<strong>Uncaught RangeError</strong><em>不被catch捕获的语法围度错误</em></h2>"
-			+ "<p>错误代码:function a(){return a();};a()</p>"
+			+ "<p>错误代码:function a(){return a();};a();</p>"
 			+ "<p>报错信息:<strong>Uncaught RangeError: Maximum call stack size exceeded</strong></p>"
 			+ "<p>解决方案:<b>最多的调用次数超出内存限额，即内存溢出。检查是否有无节制调用递归方法。</b></p>"
 			+ "<h2>6.<strong>Failed to load resource</strong><em>加载资源失败</em></h2>"
