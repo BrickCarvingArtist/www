@@ -110,21 +110,21 @@ import Article from "../../model/article";
 // 	image : ["http://static.ikindness.cn/image/article/2.png"]
 // });
 
-var article = new Article({
-	title : "分析前端工程师的JD（招聘信息）",
-	description : "分析前端工程师的JD（招聘信息）",
-	keyword : ["前端", "招聘", "砖雕艺术家", "ikindness", "JD", "找工作", "高薪就业"],
-	content : "分析前端工程师的JD（招聘信息）",
-	image : ["http://static.ikindness.cn/image/article/3.png"]
-});
-
 // var article = new Article({
-// 	title : "杭州企业红黑榜公示",
-// 	description : "杭州企业红黑榜公示",
-// 	keyword : ["前端", "招聘", "砖雕艺术家", "ikindness", "找工作", "高薪就业"],
-// 	content : "杭州企业红黑榜公示",
+// 	title : "分析前端工程师的JD（招聘信息）",
+// 	description : "分析前端工程师的JD（招聘信息）",
+// 	keyword : ["前端", "招聘", "砖雕艺术家", "ikindness", "JD", "找工作", "高薪就业"],
+// 	content : "分析前端工程师的JD（招聘信息）",
 // 	image : ["http://static.ikindness.cn/image/article/3.png"]
 // });
+
+var article = new Article({
+	title : "杭州企业红黑榜公示",
+	description : "杭州企业红黑榜公示",
+	keyword : ["前端", "招聘", "砖雕艺术家", "ikindness", "找工作", "高薪就业"],
+	content : "杭州企业红黑榜公示",
+	image : ["http://static.ikindness.cn/image/article/3.png"]
+});
 
 // var article = new Article({
 // 	title : "文章",
