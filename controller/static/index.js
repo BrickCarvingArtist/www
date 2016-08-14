@@ -52,12 +52,12 @@ const Corp = "砖雕艺术馆",
 			callback(req, res){
 				res.end(renderPage({
 					style : [
-						"/css/article.css"
+						"/css/home.css"
 					],
 					script : [
-						"/js/article.js"
+						"/js/home.js"
 					],
-					title : `文章-${Corp}`,
+					title : `${Corp}`,
 					keyword : ["ikindness", "砖雕艺术家", "砖雕艺术馆", "前端", "前端开发", "前端培训"],
 					description : "砖雕艺术馆前端培训，砖雕艺术家的个人站",
 					page : renderToString(createFactory(home)())
