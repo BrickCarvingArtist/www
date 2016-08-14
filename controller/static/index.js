@@ -77,7 +77,7 @@ const Corp = "砖雕艺术馆",
 						script : [
 							"/js/article.js"
 						],
-						title : `文章-${Corp}`,
+						title : `文章列表-${Corp}`,
 						keyword : _data.map(list => {
 							return list.title
 						}),
@@ -94,6 +94,7 @@ const Corp = "砖雕艺术馆",
 			signType : [0, 1, 2],
 			callback(req, res){
 				fetch(`${LocalServer}/api/article/fetch/${req.params.id}`).then(res => res.json()).then(data => {
+					let _data = data.data;
 					if(data.code){
 						res.redirect("/lost");
 					}else{
@@ -105,7 +106,7 @@ const Corp = "砖雕艺术馆",
 							script : [
 								"/js/articleDetail.js"
 							],
-							title : `文章-${Corp}`,
+							title : `${_data.title}-${Corp}`,
 							keyword : _data.keyword,
 							description : _data.description,
 							page : renderToString(createFactory(articleDetail)({
