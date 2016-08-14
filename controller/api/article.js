@@ -1,10 +1,10 @@
 import Article from "../../model/article";
-// var article = new Article({
-// 	title : "砖雕艺术家的前端课程简介",
-// 	description : "砖雕艺术家的前端课程简介",
-// 	keyword : ["前端", "培训", "砖雕艺术家", "ikindness", "html", "css", "javascript"],
-// 	content : "砖雕艺术家的前端课程简介"
-// });
+var article = new Article({
+	title : "砖雕艺术家的前端课程简介",
+	description : "砖雕艺术家的前端课程简介",
+	keyword : ["前端", "培训", "砖雕艺术家", "ikindness", "html", "css", "javascript"],
+	content : "砖雕艺术家的前端课程简介"
+});
 
 // var article = new Article({
 // 	title : "Chrome浏览器控制台报错信息汇总",
@@ -134,9 +134,9 @@ import Article from "../../model/article";
 // 	image : []
 // });
 
-// article.save((err, data) => {
-// 	console.log(err, data);
-// });
+article.save((err, data) => {
+	console.log(err, data);
+});
 
 // Article.remove({
 // 	_id : "57adda79b7c4dd784f136eb8"
