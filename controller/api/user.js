@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {parse} from "cookie";
-import {MongoConfig} from "../../config/config";
+import {MongoConfig} from "../../config";
 import {BaseUrl, pureTransmit} from "./util";
 import UserSchema from "../../table/schema/user";
 const User = mongoose.model("User", UserSchema);

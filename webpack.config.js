@@ -5,7 +5,8 @@ export default {
 	entry : {
 		home : `${entryPath}home`,
 		article : `${entryPath}article`,
-		dependencies : ["react", "react-dom", "react-router", "redux", "isomorphic-fetch"]
+		articleDetail : `${entryPath}article/detail`,
+		dependencies : ["react", "react-dom", "isomorphic-fetch"]
 	},
 	output : {
 		path : `${process.cwd()}/resource/`,

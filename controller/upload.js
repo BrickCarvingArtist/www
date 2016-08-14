@@ -1,5 +1,5 @@
 import formidable from "formidable";
-import {UploadConfig} from "../config/config";
+import {UploadConfig} from "../config";
 const upload = (req, res, callback) => {
 	let form = new formidable.IncomingForm(),
 		_end = 0;

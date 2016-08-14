@@ -187,7 +187,7 @@ class News extends Component{
 						{
 							article.map((list, index) => (
 								<p>
-									<a href={`/article/#${list.id}`} target="_blank">
+									<a href={`/article/#${list._id}`} target="_blank">
 										{list.title}
 									</a>
 								</p>

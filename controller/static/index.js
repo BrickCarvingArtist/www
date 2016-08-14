@@ -1,39 +1,76 @@
 import React, {createFactory} from "react";
 import {renderToString} from "react-dom/server";
-import {match, RouterContext} from "react-router";
+import {ServerConfig} from "../../config";
 import {Page as home} from "../../dev_resource/pack/home";
-import {routes as article} from "../../dev_resource/pack/article";
+import {Page as article} from "../../dev_resource/pack/article";
+import {Page as articleDetail} from "../../dev_resource/pack/article/detail";
 import lost from "../../dev_resource/component/lost";
 const Corp = "砖雕艺术馆",
-	ViewModel = "./index",
+	LocalServer = `http://${ServerConfig.host}:${ServerConfig.port}`,
+	renderPage = (option) => {
+		const style = option.style,
+			script = option.script,
+			title = option.title,
+			keyword = option.keyword,
+			description = option.description,
+			page = option.page;
+		return `
+			<!DOCTYPE html>
+			<html>
+				<head>
+					<meta charset="utf-8" />
+					<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+					<meta keywords="${keyword.join(", ")}" />
+					<meta description="${description}" />
+					<meta author="杨鹏程, BrickCarvingArtist" />
+					<link rel="shortcut icon" type="image/ico" href="http://static.ikindness.cn/image/favicon.ico" />
+					${
+						style.map(list => {
+							return `<link rel="stylesheet" href="${list}" />`
+						})
+					}
+					<title>${title}</title>
+					<body>
+						<div class="main">
+							${page}
+						</div>
+						<script src="/lib/dependencies.min.js"></script>
+						${
+							script.map(list => {
+								return `<script src="${list}""></script>`
+							})
+						}
+					</body>
+				</head>
+			</html>
+		`;
+	},
 	Enum = [
 		{
 			route : "/",
 			signType : [0, 1, 2],
 			callback(req, res){
-				res.render(ViewModel , {
+				res.end(renderPage({
 					style : [
-						"/css/home.css"
+						"/css/article.css"
 					],
 					script : [
-						"/js/home.js"
+						"/js/article.js"
 					],
-					title : `${Corp}`,
-					keywords : ["ikindness", "砖雕艺术家", "砖雕艺术馆", "前端", "前端开发", "前端培训"].join(", "),
+					title : `文章-${Corp}`,
+					keyword : ["ikindness", "砖雕艺术家", "砖雕艺术馆", "前端", "前端开发", "前端培训"],
 					description : "砖雕艺术馆前端培训，砖雕艺术家的个人站",
 					page : renderToString(createFactory(home)())
-				});
+				}));
 			}
 		},
 		{
 			route : "/article",
 			signType : [0, 1, 2],
 			callback(req, res){
-				match({
-					routes : article,
-					location : req.url
-				}, (error, redirectLocation, renderProps) => {
-					res.render(ViewModel, {
+				fetch(`${LocalServer}/api/article/fetch`).then(res => res.json()).then(data => {
+					let _data = data.data;
+					res.end(renderPage({
 						style : [
 							"/css/article.css"
 						],
@@ -41,10 +78,41 @@ const Corp = "砖雕艺术馆",
 							"/js/article.js"
 						],
 						title : `文章-${Corp}`,
-						keywords : renderProps.routes[0].keywords.join(", "),
+						keyword : _data.map(list => {
+							return list.title
+						}),
 						description : "砖雕艺术馆前端培训，砖雕艺术家的个人站",
-						page : renderToString(<RouterContext {...renderProps} />)
-					});
+						page : renderToString(createFactory(article)({
+							data : _data
+						}))
+					}));
+				});
+			}
+		},
+		{
+			route : "/article/:id",
+			signType : [0, 1, 2],
+			callback(req, res){
+				fetch(`${LocalServer}/api/article/fetch/${req.params.id}`).then(res => res.json()).then(data => {
+					if(data.code){
+						res.redirect("/lost");
+					}else{
+						let _data = data.data;
+						res.end(renderPage({
+							style : [
+								"/css/article.css"
+							],
+							script : [
+								"/js/articleDetail.js"
+							],
+							title : `文章-${Corp}`,
+							keyword : _data.keyword,
+							description : _data.description,
+							page : renderToString(createFactory(articleDetail)({
+								data : _data
+							}))
+						}));
+					}
 				});
 			}
 		},
@@ -52,16 +120,14 @@ const Corp = "砖雕艺术馆",
 			route : "*",
 			signType : [0, 1, 2],
 			callback(req, res){
-				res.render(ViewModel , {
-					style : [
-						// "/css/column.css"
-					],
-					script : [
-						// "/js/lost.js"
-					],
+				res.end(renderPage({
+					style : [],
+					script : [],
 					title : `努力建设中-${Corp}`,
+					keyword : ["ikindness", "砖雕艺术家", "砖雕艺术馆", "前端", "前端开发", "前端培训"],
+					description : "砖雕艺术馆前端培训，砖雕艺术家的个人站",
 					page : renderToString(createFactory(lost)())
-				});
+				}));
 			}
 		}
 	],
@@ -82,5 +148,5 @@ Enum.map(list => {
 });
 export {
 	Route,
-	Router 
+	Router
 };

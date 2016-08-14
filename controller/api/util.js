@@ -1,6 +1,5 @@
 import {stringify} from "querystring";
-import {HostConfig} from "../../config/config";
-const BaseUrl = `http://${HostConfig.host}:${HostConfig.port}/`,
+const BaseUrl = `http://www.ikindness.cn/`,
 	getRequestOption = (specificOption, req) => {
 		let query = req.query,
 			option = {

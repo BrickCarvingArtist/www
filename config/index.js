@@ -3,24 +3,14 @@ const WebpackDevServerConfig = {
 		port : 60000
 	},
 	ServerConfig = {
+		host : "127.0.0.1",
 		port : 10000
 	},
-	HostConfig = {
-		//Tip : domain
-		hostName : "dev.ikindness.com",
-		//Tip : 后端nginx服务IP
-		host : "10.1.1.62",
-		//Tip : 后端nginx服务端口
-		port : 80
-	},
 	MongoConfig = {
-		//Tip : redis server
 		host : "127.0.0.1",
-		//Tip : redis port
-		port : 27017
+		port : 12000
 	},
 	UploadConfig = {
-		//Tip : 文件上传路径
 		path : `${process.cwd()}/src/upload/`
 	},
 	LogConfig = {
@@ -29,7 +19,6 @@ const WebpackDevServerConfig = {
 export {
 	WebpackDevServerConfig,
 	ServerConfig,
-	HostConfig,
 	MongoConfig,
 	UploadConfig,
 	LogConfig

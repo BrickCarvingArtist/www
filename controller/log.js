@@ -1,5 +1,5 @@
 import {appendFile} from "fs";
-import {LogConfig} from "../config/config";
+import {LogConfig} from "../config";
 export default router => {
 	router.all("*", (req, res, next) => {
 		const Log = new Promise((resolve, reject) => {
