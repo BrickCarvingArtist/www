@@ -20,6 +20,7 @@ const Corp = "砖雕艺术馆",
 				<head>
 					<meta charset="utf-8" />
 					<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+					<meta name="viewport" content="width=1200" />
 					<meta keywords="${keyword.join(", ")}" />
 					<meta description="${description}" />
 					<meta author="杨鹏程, BrickCarvingArtist" />
