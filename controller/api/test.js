@@ -614,14 +614,16 @@ export default [
 			data = type ? data.filter((list, index) => {
 				return list.type === type;
 			}) : data;
-			if(jsonp){
-				res.end(`jsonpCallback(${JSON.stringify(data)});`);
-			}
-			res.json({
+			data = {
 				code : 0,
 				data,
 				message : "success"
-			});
+			};
+			if(jsonp){
+				res.end(`jsonpCallback(${JSON.stringify(data)});`);
+			}else{
+				res.json(data);
+			}
 		}
 	},
 	{
