@@ -135,58 +135,6 @@ TopNav.defaultProps = {
 					]
 				},
 				{
-					name : "获取游戏玩家信息",
-					url : "/api/test/getGameInfo",
-					description : "项目实战，游戏商城练习",
-					method : "get",
-					key : [
-						{
-							name : "qq",
-							description : "number类型，5-10位qq号码"
-						}
-					]
-				},
-				{
-					name : "获取游戏商城商品",
-					url : "/api/test/getGameProduct",
-					description : "项目实战，游戏商城练习",
-					method : "get",
-					key : [
-						{
-							name : "type",
-							description : "number类型，1为生命，2为护甲，3为魔抗，4为攻击，5为魔法"
-						},
-						{
-							name : "grade",
-							description : "number类型，等级1-3"
-						},
-						{
-							name : "status",
-							description : "number类型，1为全部，2为可用，3为不可用"
-						}
-					]
-				},
-				{
-					name : "购买游戏商城道具",
-					url : "/api/test/gameBuy",
-					description : "项目实战，游戏商城练习",
-					method : "post",
-					key : [
-						{
-							name : "qq",
-							description : "number类型，5-10位qq号码"
-						},
-						{
-							name : "productId",
-							description : "number类型，商品id"
-						},
-						{
-							name : "sum",
-							description : "number类型，购买商品数量"
-						}
-					]
-				},
-				{
 					name : "获取众筹列表",
 					url : "/api/test/getFund",
 					description : "项目实战，商品列表练习",
@@ -195,6 +143,10 @@ TopNav.defaultProps = {
 						{
 							name : "type",
 							description : "number类型, 商品类型"
+						},
+						{
+							name : "jsonp",
+							description : "boolean类型, 是否以jsonpCallback方法调用"
 						}
 					]
 				},
