@@ -127,8 +127,9 @@ export default [
 		cross : 1,
 		signType : [0, 1, 2],
 		callback(req, res){
-			let type = req.query.type;
-			const data = [
+			let type = req.query.type,
+				jsonp = req.query.jsonp;
+			let data = [
 				{
 					id : "0",
 					type : "1",
@@ -610,26 +611,15 @@ export default [
 					image : "http://static.ikindness.cn/image/fund/6-7.png"
 				}
 			];
+			data = type ? data.filter((list, index) => {
+				return list.type === type;
+			}) : data;
+			if(jsonp){
+				res.end(`jsonpCallback(${JSON.stringify(data)});`);
+			}
 			res.json({
 				code : 0,
-				data : type ? data.filter((list, index) => {
-					return list.type === type;
-				}) : data,
-				message : "success"
-			});
-		}
-	},
-	{
-		from : "getOpen",
-		method : "get",
-		cross : 1,
-		signType : [0, 1, 2],
-		callback(req, res){
-			res.json({
-				code : 0,
-				data : {
-
-				},
+				data,
 				message : "success"
 			});
 		}
