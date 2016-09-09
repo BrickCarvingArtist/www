@@ -4,21 +4,21 @@ const data = [
 		title : "高性能JavaScript",
 		description : "",
 		content : "",
-		image : ["http://static.ikindness.cn/image/logo.png"]
+		image : ["http://static.ikindness.cn/static/image/logo.png"]
 	},
 	{
 		id : 2,
 		title : "Maintainable JavaScript",
 		description : "",
 		content : "",
-		image : ["http://static.ikindness.cn/image/logo.png"]
+		image : ["http://static.ikindness.cn/static/image/logo.png"]
 	},
 	{
 		id : 3,
 		title : "Web性能权威指南",
 		description : "",
 		content : "",
-		image : ["http://static.ikindness.cn/image/logo.png"]
+		image : ["http://static.ikindness.cn/static/image/logo.png"]
 	}
 ];
 export default [
