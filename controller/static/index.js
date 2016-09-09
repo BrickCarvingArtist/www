@@ -24,7 +24,7 @@ const Corp = "砖雕艺术馆",
 					<meta keywords="${keyword.join(", ")}" />
 					<meta description="${description}" />
 					<meta author="杨鹏程, BrickCarvingArtist" />
-					<link rel="shortcut icon" type="image/ico" href="http://static.ikindness.cn/image/favicon.ico" />
+					<link rel="shortcut icon" type="image/ico" href="http://static.ikindness.cn/static/image/favicon.ico" />
 					${
 						style.map(list => {
 							return `<link rel="stylesheet" href="${list}" />`
