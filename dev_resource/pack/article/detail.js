@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import fetch from "isomorphic-fetch";
+import marked from "../library/markdown";
 class FixedNav extends Component{
 	render(){
 		return (
@@ -32,21 +33,16 @@ class Article extends Component{
 		return (
 			<div className="article full">
 				<div className="w1200">
-					<div className="section">
-						<h1>
-							{title}
-						</h1>
+					{
+						data.image ? data.image.map((list, index) => (
+							<img src={list} title={title} alt={title} key={index} />
+						)) : null
+					}
+					<div dangerouslySetInnerHTML={
 						{
-							data.image ? data.image.map((list, index) => (
-								<img src={list} title={title} alt={title} key={index} />
-							)) : null
+							__html : data.content ? marked(data.content) : ""
 						}
-						<div dangerouslySetInnerHTML={
-							{
-								__html : data ? data.content : ""
-							}
-						}></div>
-					</div>
+					}></div>
 				</div>
 			</div>
 		);

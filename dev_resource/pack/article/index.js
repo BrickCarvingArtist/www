@@ -30,7 +30,7 @@ class Home extends Component{
 						data.map((list, index) => (
 							<div className="case" key={index}>
 								<a href={`/article/${list._id}`}>
-									<img src={list.image[0]} />
+									<img src={list.file} />
 									<h1>
 										{list.title}
 									</h1>
