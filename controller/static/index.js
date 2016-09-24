@@ -44,7 +44,7 @@ const Corp = "砖雕艺术馆",
 							title : `文章列表-${Corp}`,
 							keyword : data.map(list => {
 								return list.title
-							}).join(" ,"),
+							}).join(", "),
 							description : "砖雕艺术馆前端培训，砖雕艺术家的个人站",
 							page : renderToString(createFactory(article)({
 								data
