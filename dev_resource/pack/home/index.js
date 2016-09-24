@@ -201,7 +201,7 @@ class News extends Component{
 						{
 							library.map((list, index) => (
 								<p key={index}>
-									<a href={`http://static.ikindness.cn/static/library/${encodeURI(list.title)}.pdf`} target="_blank">
+									<a href={`http://static.ikindness.cn/library/${encodeURI(list.title)}.pdf`} target="_blank">
 										{list.title}
 									</a>
 								</p>

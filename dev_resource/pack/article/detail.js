@@ -8,7 +8,7 @@ class FixedNav extends Component{
 				<div className="w1200">
 					<a className="btn left" href="/">首页</a>
 					<a className="btn left" href="/article">精选</a>
-					<a className="btn right">顶部</a>
+					<a className="btn right" href="#">顶部</a>
 				</div>
 			</div>
 		);
