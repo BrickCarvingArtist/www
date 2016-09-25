@@ -19,7 +19,7 @@ export default ({style, script, title, keyword, description, page}) => {
 			<div class="main">
 				${page}
 			</div>
-			<script src="/lib/dependencies.min.js"></script>
+			<script src="/www/static/lib/dependencies.min.js"></script>
 			${
 				script.map(list => {
 					return `<script src="/www/static${list}""></script>`
