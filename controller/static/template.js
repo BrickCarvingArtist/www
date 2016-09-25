@@ -8,7 +8,7 @@ export default ({style, script, title, keyword, description, page}) => {
 		<meta keywords="${keyword}" />
 		<meta description="${description}" />
 		<meta author="杨鹏程, BrickCarvingArtist" />
-		<link rel="shortcut icon" type="image/ico" href="http://static.ikindness.cn/static/image/favicon.ico" />
+		<link rel="shortcut icon" type="image/ico" href="/base/image/favicon.ico" />
 		${
 			style.map(list => {
 				return `<link rel="stylesheet" href="/www/static${list}" />`
@@ -19,7 +19,7 @@ export default ({style, script, title, keyword, description, page}) => {
 			<div class="main">
 				${page}
 			</div>
-			<script src="/www/static/lib/dependencies.min.js"></script>
+			<script src="/www/static/js/dependencies.min.js"></script>
 			${
 				script.map(list => {
 					return `<script src="/www/static${list}""></script>`
