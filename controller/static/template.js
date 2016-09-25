@@ -11,7 +11,7 @@ export default ({style, script, title, keyword, description, page}) => {
 		<link rel="shortcut icon" type="image/ico" href="http://static.ikindness.cn/static/image/favicon.ico" />
 		${
 			style.map(list => {
-				return `<link rel="stylesheet" href="${list}" />`
+				return `<link rel="stylesheet" href="/www/static${list}" />`
 			})
 		}
 		<title>${title}</title>
@@ -22,7 +22,7 @@ export default ({style, script, title, keyword, description, page}) => {
 			<script src="/lib/dependencies.min.js"></script>
 			${
 				script.map(list => {
-					return `<script src="${list}""></script>`
+					return `<script src="/www/static${list}""></script>`
 				})
 			}
 		</body>
