@@ -1,4 +1,4 @@
-import path from "path";
+import {join, resolve} from "path";
 import webpack from "webpack";
 const entryPath = "./dev_resource/entry/";
 export default {
@@ -9,7 +9,7 @@ export default {
 		dependencies : ["react", "react-dom", "isomorphic-fetch"]
 	},
 	output : {
-		path : `${process.cwd()}/resource/`,
+		path : resolve(process.cwd(), "../static/www/static/"),
 		filename : "/js/[name].js",
 		chunkFilename : "/lib/[name].min.js"
 	},
@@ -27,18 +27,18 @@ export default {
 	resolve : {
 		modulesDirectories : [
 			"node_modules",
-			path.join(__dirname, "./node_modules")
+			join(__dirname, "./node_modules")
 		],
 		extensions : ["", ".js"],
 	},
 	resolveLoader : {
 		modulesDirectories : [
 			"node_modules",
-			path.join(__dirname, "./node_modules")
+			join(__dirname, "./node_modules")
 		]
 	},
 	plugins : [
-		new webpack.optimize.CommonsChunkPlugin("dependencies", "/lib/dependencies.min.js"),
+		new webpack.optimize.CommonsChunkPlugin("dependencies", "/js/dependencies.min.js"),
 		new webpack.optimize.MinChunkSizePlugin({
 			compress : {
 				warnings: false

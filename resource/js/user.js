@@ -1,1 +1,0 @@
-webpackJsonp([2],[function(n,r,e){"use strict";var o=e(!function(){var n=new Error('Cannot find module "../pack/user"');throw n.code="MODULE_NOT_FOUND",n}()),t=e(29);(0,o.init)(t.render)}]);

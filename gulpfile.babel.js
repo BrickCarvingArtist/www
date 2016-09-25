@@ -23,5 +23,5 @@ gulp.task("webpack:build-dev", callback => {
 gulp.task("stylus:build-dev", callback => {
 	return gulp.src("./dev_resource/stylus/*.styl").pipe(stylus({
 		compress : 1
-	})).pipe(gulp.dest("./resource/css"));
+	})).pipe(gulp.dest("../static/www/static/css"));
 });
